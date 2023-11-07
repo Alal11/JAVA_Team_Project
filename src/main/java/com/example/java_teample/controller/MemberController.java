@@ -1,9 +1,10 @@
 package com.example.java_teample.controller;
 
+import com.example.java_teample.dto.MemberDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MemberController {
@@ -14,9 +15,10 @@ public class MemberController {
     }
 
     @PostMapping("/member/save")
-    public String save(@RequestParam("memberEmil") String memberEmail){
+    public String save(@ModelAttribute MemberDTO memberDTO){
         System.out.println("MemberController.save");
-        System.out.println("memberEmail = " + memberEmail);
+        // 단축키 soutp
+        System.out.println("memberDTO = " + memberDTO);
         return "index";
     }
 }
