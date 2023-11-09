@@ -1,5 +1,22 @@
 server:
-  port: 8081
+  port: 8081  # 포트 번호 설정
 
-# 포트 번호 설정
-# 나중에 DB를 여기서 설정할 수 있음
+# database 연동 설정
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #    각자 PC에 만들어놓은 Database 이름을 써야 함
+    url: jdbc:mysql://localhost:3306/Java_Teample_DB?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    #    mysql에 생성한 사용자 계정 정보를 써야 함
+    username: test_user1
+    password: 0000
+  thymeleaf:
+    cache: false
+
+  # spring data jpa 설정
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: create
