@@ -74,7 +74,7 @@ public class MemberController {
         String myEmail=(String) session.getAttribute("loginEmail");
         MemberDTO memberDTO=memberService.updateForm(myEmail);
         model.addAttribute("updateMember", memberDTO);
-        return "updata";
+        return "update";
     }
 
     @GetMapping("/member/update")
@@ -86,7 +86,7 @@ public class MemberController {
     @GetMapping("/member/delete/{id}")
     public String deleteById(@PathVariable Long id){
         memberService.deleteById(id);
-        return "readirect:/member/";
+        return "redirect:/member/";
     }
 
     @GetMapping("/member/logout")
