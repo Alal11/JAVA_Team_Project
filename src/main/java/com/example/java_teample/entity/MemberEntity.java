@@ -40,4 +40,15 @@ public class MemberEntity {  // 테이블 역할을 함
         memberEntity.setUser_address(memberDTO.getUser_address());
         return memberEntity;
     }
+
+    public static MemberEntity toUpdateMemberEntity(MemberDTO memberDTO){
+        MemberEntity memberEntity =new MemberEntity();
+        memberEntity.setUser_id(memberDTO.getUser_id());
+        memberEntity.setEmail(memberDTO.getEmail());
+        memberEntity.setUser_pw(memberDTO.getUser_pw());
+        memberEntity.setUser_name(memberDTO.getUser_name());
+        memberEntity.setPhone_number(memberDTO.getPhone_number());
+        memberEntity.setUser_address(memberDTO.getUser_address());
+        return memberEntity;
+    }
 }

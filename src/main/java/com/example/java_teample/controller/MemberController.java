@@ -68,4 +68,24 @@ public class MemberController {
         model.addAttribute("member", memberDTO);
         return "detail";
     }
+
+    @GetMapping("/member/update")
+    public String updataForm(HttpSession session, Model model){
+        String myEmail=(String) session.getAttribute("loginEmail");
+        MemberDTO memberDTO=memberService.updateForm(myEmail);
+        model.addAttribute("updateMember", memberDTO);
+        return "updata";
+    }
+
+    @GetMapping("/member/update")
+    public String update(@ModelAttribute MemberDTO memberDTO){
+        memberService.update(memberDTO);
+        return "redirect:/member/"+memberDTO.getUser_id();
+    }
+
+    @GetMapping("/member/delete/{id}")
+    public String deleteById(@PathVariable Long id){
+        memberService.deleteById(id);
+        return "readirect:/member/";
+    }
 }
