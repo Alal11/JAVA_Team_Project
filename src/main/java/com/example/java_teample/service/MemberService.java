@@ -6,6 +6,8 @@ import com.example.java_teample.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -40,11 +42,23 @@ public class MemberService {
                 return dto;
             }else{
                 // 비밀번호 불일치 (로그인 실패)
+                return null;
             }
         } else{
             // 조회 결과가 없다 (해당 이메일을 가진 회원이 없다)
             return null;
         }
-        return null;
+    }
+
+    public List<MemberDTO> findAll() {
+        List<MemberEntity> memberEntityList = memberRepository.findAll();
+        List<MemberDTO> memberDTOList = new ArrayList<>();
+        for(MemberEntity memberEntity: memberEntityList){
+            memberDTOList.add(MemberDTO.toMemberDTO(memberEntity));
+//            위 한줄이랑 같은 의미
+//            MemberDTO memberDTO=MemberDTO.toMemberDTO(memberEntity);
+//            memberDTOList.add(memberDTO);
+        }
+        return memberDTOList;
     }
 }
