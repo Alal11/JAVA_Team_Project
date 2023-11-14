@@ -6,16 +6,15 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     #    각자 PC에 만들어놓은 Database 이름을 써야 함
-    url: jdbc:mysql://localhost:3306/JavaDB?serverTimezone=UTC&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/javadb?serverTimezone=UTC&characterEncoding=UTF-8
     #    mysql에 생성한 사용자 계정 정보를 써야 함
     username: Alal11
-    password: 0000
+    password: '0000'
   thymeleaf:
     cache: false
 
   # spring data jpa 설정
   jpa:
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: false
     show-sql: true
     hibernate:

@@ -22,12 +22,12 @@ public class MemberController {
 
     // 회원가입 페이지 출력 요청
     @GetMapping("/member/save")
-    public String saveForm(){
+    public String saveForm() {
         return "save";
     }
 
     @PostMapping("/member/save")  // name 값을 requestparam에 담아온다
-    public String save(@ModelAttribute MemberDTO memberDTO){
+    public String save(@ModelAttribute MemberDTO memberDTO) {
         System.out.println("MemberController.save");
         // 단축키 soutp
         System.out.println("memberDTO = " + memberDTO);
@@ -37,60 +37,60 @@ public class MemberController {
     }
 
     @GetMapping("/member/login")
-    public String loginForm(){
+    public String loginForm() {
         return "login";
     }
 
     @PostMapping("/member/login")
-    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session){
-        MemberDTO loginResult=memberService.login(memberDTO);
-        if(loginResult!=null){
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
+        MemberDTO loginResult = memberService.login(memberDTO);
+        if (loginResult != null) {
             // 로그인 성공
             session.setAttribute("loginEmail", loginResult.getEmail());
             return "main";
-        }else{
+        } else {
             // login 실패
             return "login";
         }
     }
 
     @GetMapping("/member/")
-    public String findAll(Model model){
-        List<MemberDTO>memberDTOList=memberService.findAll();
+    public String findAll(Model model) {
+        List<MemberDTO> memberDTOList = memberService.findAll();
         // 어떠한 html로 가져갈 데이터가 있다면 model 사용
         model.addAttribute("memberList", memberDTOList);
         return "list";
     }
 
     @GetMapping("/member/{id}")
-    public String findById(@PathVariable Long id, Model model){
-        MemberDTO memberDTO=memberService.findById(id);
+    public String findById(@PathVariable Long id, Model model) {
+        MemberDTO memberDTO = memberService.findById(id);
         model.addAttribute("member", memberDTO);
         return "detail";
     }
 
     @GetMapping("/member/update")
-    public String updataForm(HttpSession session, Model model){
-        String myEmail=(String) session.getAttribute("loginEmail");
-        MemberDTO memberDTO=memberService.updateForm(myEmail);
+    public String updataForm(HttpSession session, Model model) {
+        String myEmail = (String) session.getAttribute("loginEmail");
+        MemberDTO memberDTO = memberService.updateForm(myEmail);
         model.addAttribute("updateMember", memberDTO);
         return "update";
     }
 
-    @GetMapping("/member/update")
+ /*   @GetMapping("/member/update")
     public String update(@ModelAttribute MemberDTO memberDTO){
         memberService.update(memberDTO);
         return "redirect:/member/"+memberDTO.getUser_id();
-    }
+    }*/
 
     @GetMapping("/member/delete/{id}")
-    public String deleteById(@PathVariable Long id){
+    public String deleteById(@PathVariable Long id) {
         memberService.deleteById(id);
         return "redirect:/member/";
     }
 
     @GetMapping("/member/logout")
-    public String logout(HttpSession session){
+    public String logout(HttpSession session) {
         session.invalidate();
         return "index";
     }
