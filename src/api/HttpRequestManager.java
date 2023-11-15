@@ -1,8 +1,6 @@
 package api;
 
-import entity.Member;
 import ip.Host;
-import login.LoginMember;
 
 import java.io.BufferedReader;
 import java.io.IOException;
