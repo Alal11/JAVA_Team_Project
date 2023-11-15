@@ -1,48 +1,35 @@
 package cookeryket_sb.cookeryket_sb.entity;
 
-import cookeryket_sb.cookeryket_sb.dto.UserDTO;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
-@Setter
-@Data
-@Table(name = "user")
-public class UserEntity {
+@ToString
+@NoArgsConstructor
+@Table(name = "member")
+public class Member {
 
     @Id
-    @Column(unique = true)
-    private String userId;
+    private String memberId;
 
-    @Column
-    private String userPw;
+    private String memberPw;
+    private String memberName;
+    private String memberPhone;
+    private String memberEmail;
+    private String memberAddress;
 
-    @Column
-    private String userName;
-
-    @Column
-    private String phoneNumber;
-
-    @Column
-    private String email;
-
-    @Column
-    private String userAddress;
-
-    public static UserEntity toMemberEntity(UserDTO userDTO) {
-        UserEntity userEntity = new UserEntity();
-
-        userEntity.setUserId(userDTO.getUserId());
-        userEntity.setUserPw(userDTO.getUserPw());
-        userEntity.setUserName(userDTO.getUserName());
-        userEntity.setPhoneNumber(userDTO.getPhoneNumber());
-        userEntity.setEmail(userDTO.getEmail());
-        userEntity.setUserAddress(userDTO.getUserAddress());
-
-        return userEntity;
+    @Builder
+    public Member(String memberId, String memberPw, String memberName, String memberPhone
+                  ,String memberEmail, String memberAddress
+            ) {
+        this.memberId = memberId;
+        this.memberPw = memberPw;
+        this.memberName = memberName;
+        this.memberPhone = memberPhone;
+        this.memberEmail = memberEmail;
+        this.memberAddress = memberAddress;
     }
+
 }

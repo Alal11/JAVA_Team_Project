@@ -1,40 +1,57 @@
 package cookeryket_sb.cookeryket_sb.Service;
 
-import cookeryket_sb.cookeryket_sb.Repository.UserRepository;
-import cookeryket_sb.cookeryket_sb.dto.UserDTO;
-import cookeryket_sb.cookeryket_sb.entity.UserEntity;
+import cookeryket_sb.cookeryket_sb.Repository.MemberRepository;
+import cookeryket_sb.cookeryket_sb.entity.Member;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class MemberService {
 
-    private final UserRepository userRepository;
+    private final MemberRepository memberRepository;
 
-    public void save(UserDTO userDTO) {
-        UserEntity userEntity = UserEntity.toMemberEntity(userDTO);
-        userRepository.save(userEntity);
+    public Member join(final Member member) {
+//        System.out.println("member = " + member);
+        Member joinMember = validateDuplicatedUser(member);
+        return memberRepository.save(joinMember);
+//        return new Member();
     }
 
-    public UserDTO login(UserDTO userDTO) { // entity 객체는 service에서만
-        Optional<UserEntity> byEmail = userRepository.findByEmail(userDTO.getEmail());
-        if (byEmail.isPresent()) {
-            UserEntity userEntity = byEmail.get();
-            if (userEntity.getUserPw().equals(userDTO.getUserPw())) {
-                // 비밀번호 일치
-                // entity -> dto 변환 후 리턴
-                UserDTO dto = UserDTO.toUserDTO(userEntity);
-                return dto;
-            } else {
-                // 비밀번호 불일치
-                return null;
-            }
+    @Transactional
+    Member validateDuplicatedUser(final Member member) {
+        log.info("member in validate = {}", member);
+        Optional<Member> optionalUser = memberRepository.findByMemberId(member.getMemberId());
+        if (optionalUser.isPresent()) {
+            throw new IllegalStateException("이미 존재하는 아이디입니다.");
         } else {
-            // 조회 결과가 없다
-            return null;
+            return Member.builder()
+                    .memberId(member.getMemberId())
+                    .memberPw(member.getMemberPw())
+                    .memberName(member.getMemberName())
+                    .memberPhone(member.getMemberPhone())
+                    .memberEmail(member.getMemberEmail())
+                    .memberAddress(member.getMemberAddress())
+                    .build();
         }
     }
+
+    public List<Member> memberList() {
+        return memberRepository.findAll();
+    }
+
+    public Optional<Member> findByMemberId(final String loginId) {
+        return memberRepository.findByMemberId(loginId);
+    }
+
+    public Optional<Member> findById(final String memberId) {
+        return memberRepository.findById(memberId);
+    }
+
 }

@@ -1,56 +1,59 @@
 package cookeryket_sb.cookeryket_sb.controller;
 
-import cookeryket_sb.cookeryket_sb.Service.UserService;
-import cookeryket_sb.cookeryket_sb.dto.UserDTO;
+import cookeryket_sb.cookeryket_sb.entity.Member;
+import cookeryket_sb.cookeryket_sb.Service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
+import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @RestController
+@RequestMapping("/user")
 @RequiredArgsConstructor
-public class UserController {
+public class MemberController {
 
-    // 생성자 주입
-    private final UserService userService;
+    private final MemberService memberService;
 
-    // 회원가입 페이지 출력 요청
-    @GetMapping("/user/save")
-    public String saveForm() {
-        return "save";
+    // 회원가입
+    @PostMapping("/signup")
+    public void signUp(@RequestBody final Member member) {
+        memberService.join(member);
     }
 
-    @PostMapping("/user/save") // name 값을 reauestparam에 담아온다
-    public String save(@ModelAttribute UserDTO userDTO) {
-        System.out.println("UserController.save");
-        System.out.println("userDTO = " + userDTO);
-        userService.save(userDTO);
-
-        return "index";
-    }
-
-    @GetMapping("/user/login")
-    public String loginForm() {
-        return "login";
-    }
-
-    @PostMapping("/user/login")
-    public String login(@ModelAttribute UserDTO userDTO, HttpSession session) {
-        UserDTO loginResult = userService.login(userDTO);
-        if (loginResult != null) {
-            // login 성공
-            session.setAttribute("loginEmail", loginResult.getEmail());
-            return "main";
+    // 로그인
+    @GetMapping("/login/{id}")
+    public Member login(@PathVariable("id") final String id, @RequestParam("password") final String password) {
+        Optional<Member> member = memberService.findByMemberId(id);
+        if (member.isPresent()) {
+            if (member.get().getMemberPw().equals(password)) {
+                log.info("login success!");
+                return member.get();
+            } else {
+                log.info("wrong password!");
+                return null;
+            }
         } else {
-            return "login";
+            log.info("wrong id!");
+            return null;
         }
     }
 
+    @GetMapping("/list")
+    public List<Member> memberList () {
+        return memberService.memberList();
+    }
 
+    //회원 리스트
+    @GetMapping("/{id}")
+    public Member findMember (@PathVariable("id") String memberId){
+        Optional<Member> optionalMember = memberService.findById(memberId);
+        if (optionalMember.isPresent()) {
+            return optionalMember.get();
+        } else {
+            throw new IllegalArgumentException("존재하지 않는 회원입니다.");
+        }
+    }
 }
