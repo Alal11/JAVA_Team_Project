@@ -1,10 +1,10 @@
 package login;
 
-import entity.User;
+import entity.Member;
 
 public class LoginUser {
 
-    private static User user;
+    private static Member user;
 
     private static LoginUser loginUser = new LoginUser();
 
@@ -12,11 +12,11 @@ public class LoginUser {
         user = null;
     }
 
-    public static void setLoginUser(User user) {
+    public static void setLoginUser(Member user) {
         LoginUser.user = user;
     }
 
-    public static User getLoginUser() {
+    public static Member getLoginUser() {
         return user;
     }
 }

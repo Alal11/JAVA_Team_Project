@@ -3,7 +3,7 @@ package api;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dto.LoginDto;
-import entity.User;
+import entity.Member;
 import login.LoginUser;
 
 import javax.swing.*;
@@ -16,7 +16,7 @@ public class UserApi {
     /** ---------------------------------------------------------------------------------------------------
      * 회원가입
      */
-    public static void signUp(User member) {
+    public static void signUp(Member member) {
 
         String endPoint = "/user/signup";
         String requestBody;
@@ -39,13 +39,13 @@ public class UserApi {
      */
     public static void login(LoginDto loginDto) {
 
-        String endPoint = "/user/login/" + loginDto.getUserId() + "?" + "password=" + loginDto.getUserPw();
+        String endPoint = "/user/login/" + loginDto.getMemberId() + "?" + "password=" + loginDto.getMemberPw();
         String response;
-        User user = null;
+        Member user = null;
 
         try {
             response = HTTP_REQUEST_MANAGER.getRequest(endPoint);
-            user = mapper.readValue(response, User.class);
+            user = mapper.readValue(response, Member.class);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         } catch (IllegalArgumentException e) {
@@ -57,15 +57,15 @@ public class UserApi {
     }
 
     public static void updateMemberInfo() {
-        String updateUserId = LoginUser.getLoginUser().getUserId();
+        String updateUserId = LoginUser.getLoginUser().getMemberId();
 
         String endPoint = "/user/" + updateUserId;
         String response;
-        User user;
+        Member user;
 
         try {
             response = HTTP_REQUEST_MANAGER.getRequest(endPoint);
-            user = mapper.readValue(response, User.class);
+            user = mapper.readValue(response, Member.class);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
