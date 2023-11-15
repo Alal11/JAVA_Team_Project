@@ -3,22 +3,12 @@ package api;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dto.LoginDto;
-import entity.Member;
-import ip.Host;
-import login.LoginMember;
+import entity.User;
+import login.LoginUser;
 
 import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 
-public class MemberApi {
+public class UserApi {
 
     private static ObjectMapper mapper = new ObjectMapper();
     private static final HttpRequestManager HTTP_REQUEST_MANAGER = new HttpRequestManager();
@@ -26,7 +16,7 @@ public class MemberApi {
     /** ---------------------------------------------------------------------------------------------------
      * 회원가입
      */
-    public static void signUp(Member member) {
+    public static void signUp(User member) {
 
         String endPoint = "/user/signup";
         String requestBody;
@@ -49,13 +39,13 @@ public class MemberApi {
      */
     public static void login(LoginDto loginDto) {
 
-        String endPoint = "/user/login/" + loginDto.getMemberId() + "?" + "password=" + loginDto.getPassword();
+        String endPoint = "/user/login/" + loginDto.getUserId() + "?" + "password=" + loginDto.getUserPw();
         String response;
-        Member member = null;
+        User user = null;
 
         try {
             response = HTTP_REQUEST_MANAGER.getRequest(endPoint);
-            member = mapper.readValue(response, Member.class);
+            user = mapper.readValue(response, User.class);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         } catch (IllegalArgumentException e) {
@@ -63,23 +53,23 @@ public class MemberApi {
             throw new IllegalArgumentException("존재하지 않는 회원입니다. ㅋ");
         }
 
-        LoginMember.setLoginMember(member);
+        LoginUser.setLoginUser(user);
     }
 
     public static void updateMemberInfo() {
-        Long updateMemberKey = LoginMember.getLoginMember().getMemberKey();
+        String updateUserId = LoginUser.getLoginUser().getUserId();
 
-        String endPoint = "/user/" + updateMemberKey;
+        String endPoint = "/user/" + updateUserId;
         String response;
-        Member member;
+        User user;
 
         try {
             response = HTTP_REQUEST_MANAGER.getRequest(endPoint);
-            member = mapper.readValue(response, Member.class);
+            user = mapper.readValue(response, User.class);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
 
-        LoginMember.setLoginMember(member);
+        LoginUser.setLoginUser(user);
     }
 }
