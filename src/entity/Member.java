@@ -1,71 +1,71 @@
 package entity;
 
-public class User {
-    private String userId;
-    private String userPw;
-    private String userName;
-    private String phonenumber;
-    private String email;
-    private String address;
+public class Member {
+    private String memberId;
+    private String memberPw;
+    private String memberName;
+    private String memberPhone;
+    private String memberEmail;
+    private String memberAddress;
 
-    public User(String userId, String userPw, String userName, String phonenumber
-                , String email, String address) {
-        this.userId = userId;
-        this.userPw = userPw;
-        this.userName = userName;
-        this.phonenumber = phonenumber;
-        this.email = email;
-        this.address = address;
+    public Member(String memberId, String memberPw, String memberName, String memberPhone
+                , String memberEmail, String memberAddress) {
+        this.memberId = memberId;
+        this.memberPw = memberPw;
+        this.memberName = memberName;
+        this.memberPhone = memberPhone;
+        this.memberEmail = memberEmail;
+        this.memberAddress = memberAddress;
     }
 
-    public User(){}
+    public Member(){}
 
-    public String getUserId() {
-        return userId;
+    public String getMemberId() {
+        return memberId;
     }
 
-    public String getUserPw() {
-        return userPw;
+    public String getMemberPw() {
+        return memberPw;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getMemberName() {
+        return memberName;
     }
 
-    public String getPhonenumber() {
-        return phonenumber;
+    public String getMemberPhone() {
+        return memberPhone;
     }
 
-    public String getEmail() {
-        return email;
+    public String getMemberEmail() {
+        return memberEmail;
     }
 
-    public String getAddress() {
-        return address;
+    public String getMemberAddress() {
+        return memberAddress;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
     }
 
-    public void setUserPw(String userPw) {
-        this.userPw = userPw;
+    public void setMemberPw(String memberPw) {
+        this.memberPw = memberPw;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setMemberName(String memberName) {
+        this.memberName = memberName;
     }
 
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setMemberPhone(String memberPhone) {
+        this.memberPhone = memberPhone;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setMemberEmail(String memberEmail) {
+        this.memberEmail = memberEmail;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setMemberAddress(String memberAddress) {
+        this.memberAddress = memberAddress;
     }
 
 }

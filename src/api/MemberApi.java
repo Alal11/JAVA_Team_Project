@@ -4,11 +4,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dto.LoginDto;
 import entity.Member;
-import login.LoginUser;
+import login.LoginMember;
 
 import javax.swing.*;
 
-public class UserApi {
+public class MemberApi {
 
     private static ObjectMapper mapper = new ObjectMapper();
     private static final HttpRequestManager HTTP_REQUEST_MANAGER = new HttpRequestManager();
@@ -53,11 +53,11 @@ public class UserApi {
             throw new IllegalArgumentException("존재하지 않는 회원입니다. ㅋ");
         }
 
-        LoginUser.setLoginUser(user);
+        LoginMember.setLoginMember(user);
     }
 
     public static void updateMemberInfo() {
-        String updateUserId = LoginUser.getLoginUser().getMemberId();
+        String updateUserId = LoginMember.getLoginMember().getMemberId();
 
         String endPoint = "/user/" + updateUserId;
         String response;
@@ -70,6 +70,6 @@ public class UserApi {
             throw new RuntimeException(e);
         }
 
-        LoginUser.setLoginUser(user);
+        LoginMember.setLoginMember(user);
     }
 }

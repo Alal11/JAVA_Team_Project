@@ -2,21 +2,21 @@ package login;
 
 import entity.Member;
 
-public class LoginUser {
+public class LoginMember {
 
     private static Member user;
 
-    private static LoginUser loginUser = new LoginUser();
+    private static LoginMember loginUser = new LoginMember();
 
-    private LoginUser() {
+    private LoginMember() {
         user = null;
     }
 
-    public static void setLoginUser(Member user) {
-        LoginUser.user = user;
+    public static void setLoginMember(Member user) {
+        LoginMember.user = user;
     }
 
-    public static Member getLoginUser() {
+    public static Member getLoginMember() {
         return user;
     }
 }

@@ -3,18 +3,18 @@ package dto;
 public class LoginDto {
 
     private String memberId;
-    private String password;
+    private String memberPw;
 
-    public LoginDto(String memberId, String password) {
+    public LoginDto(String memberId, String memberPw) {
         this.memberId = memberId;
-        this.password = password;
+        this.memberPw = memberPw;
     }
 
     public String getMemberId() {
         return memberId;
     }
 
-    public String getPassword() {
-        return password;
+    public String getMemberPw() {
+        return memberPw;
     }
 }
