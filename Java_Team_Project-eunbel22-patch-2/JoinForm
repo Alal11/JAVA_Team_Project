@@ -1,0 +1,194 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class JoinForm extends JFrame {
+    private JTextField idField, nameField, emailField, phoneField, phonelastField, addressField, postalCodeField;
+    private JPasswordField passwordField, confirmPasswordField;
+    private JComboBox<String> birthYearCombo, birthMonthCombo, birthDayCombo, phonePrefixCombo;
+    private JButton submitButton, duplicateCheckIDButton, duplicateCheckPWButton; // 중복확인 버튼 추가
+
+    public JoinForm() {
+        // 프레임 설정
+        setTitle("회원가입 폼");
+        setSize(400, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        // 전체 패널 설정
+        JPanel 전체패널 = new JPanel();
+        전체패널.setLayout(new GridLayout(12, 2));
+
+        // 컴포넌트 초기화
+        idField = new JTextField();
+        passwordField = new JPasswordField();
+        confirmPasswordField = new JPasswordField();
+        nameField = new JTextField();
+        birthYearCombo = new JComboBox<>(new String[]{"1990", "1991", "1992"}); // 생년 선택
+        birthMonthCombo = new JComboBox<>(new String[]{"1", "2", "3"}); // 생월 선택
+        birthDayCombo = new JComboBox<>(new String[]{"1", "2", "3"}); // 생일 선택
+        emailField = new JTextField();
+        phonePrefixCombo = new JComboBox<>(new String[]{"010", "011", "012"}); // 휴대폰 접두사 선택
+        phoneField = new JTextField();
+        phonelastField = new JTextField();
+        addressField = new JTextField();
+        postalCodeField = new JTextField();
+        submitButton = new JButton("가입하기");
+        duplicateCheckIDButton = new JButton("중복확인"); // 중복확인 버튼 추가
+        duplicateCheckPWButton = new JButton("중복확인"); // 중복확인 버튼 추가
+
+        String[] emailDomains = {"naver.com", "daum.net", "gmail.com", "example.com"}; // 예시 도메인 추가
+        JComboBox<String> emailDomainCombo = new JComboBox<>(emailDomains);
+
+        // 전체 패널에 컴포넌트 추가
+        레이블과필드추가중복확인("아이디:", idField, duplicateCheckIDButton, 전체패널); // 중복확인 버튼 추가
+        레이블과필드추가("비밀번호:", passwordField, 전체패널);
+        레이블과필드추가중복확인("비밀번호 확인:", confirmPasswordField, duplicateCheckPWButton, 전체패널);
+        레이블과필드추가("이름:", nameField, 전체패널);
+        레이블과콤보추가("생년월일:", 전체패널, birthYearCombo, birthMonthCombo, birthDayCombo);
+        레이블과필드추가콤보("이메일:", emailField, emailDomainCombo, 전체패널);
+        레이블과콤보필드추가("휴대폰:", 전체패널, phonePrefixCombo, phoneField,phonelastField);
+        레이블과필드추가("주소:", addressField, 전체패널);
+        레이블과필드추가("우편번호:", postalCodeField, 전체패널);
+        전체패널.add(submitButton);
+
+        setPreferredSize(idField, 200, 25);
+        setPreferredSize(passwordField, 200, 25);
+        setPreferredSize(confirmPasswordField, 200, 25);
+        setPreferredSize(nameField, 200, 25);
+        setPreferredSize(emailField, 200, 25);
+        setPreferredSize(phoneField, 70, 25);
+        setPreferredSize(phonelastField, 70, 25);
+        setPreferredSize(addressField, 200, 25);
+        setPreferredSize(postalCodeField, 200, 25);
+        // "*필수 입력사항" 레이블 추가
+        JLabel 필수입력사항레이블 = new JLabel("*필수 입력사항");
+        필수입력사항레이블.setHorizontalAlignment(SwingConstants.RIGHT);
+        필수입력사항레이블.setForeground(Color.RED);
+
+        // 전체 패널과 "*필수 입력사항" 레이블을 프레임에 추가
+        JPanel 전체패널과레이블패널 = new JPanel(new BorderLayout());
+        전체패널과레이블패널.add(전체패널, BorderLayout.CENTER);
+        전체패널과레이블패널.add(필수입력사항레이블, BorderLayout.NORTH);
+
+        // 중앙에 "가입하기" 버튼을 추가하는 패널 생성 및 설정
+        JPanel 중앙버튼패널 = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        중앙버튼패널.add(submitButton);
+
+        // 중앙 패널과 "*필수 입력사항" 레이블 패널을 전체 패널에 추가
+        add(중앙버튼패널, BorderLayout.SOUTH);
+        add(전체패널과레이블패널, BorderLayout.CENTER);
+
+        //ID 중복확인
+        duplicateCheckIDButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 여기에 중복확인 로직을 추가할 수 있습니다.
+                // 예: 데이터베이스에서 아이디 중복 여부 확인
+                JOptionPane.showMessageDialog(JoinForm.this, "아이디 중복 여부를 확인했습니다!");
+            }
+        });
+
+        //PW 중복확인
+        duplicateCheckPWButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 비밀번호와 비밀번호 확인을 비교하여 결과에 따라 메시지 출력
+                char[] passwordChars = passwordField.getPassword();
+                char[] confirmPasswordChars = confirmPasswordField.getPassword();
+
+                if (passwordChars.length == confirmPasswordChars.length) {
+                    boolean passwordsMatch = true;
+                    for (int i = 0; i < passwordChars.length; i++) {
+                        if (passwordChars[i] != confirmPasswordChars[i]) {
+                            passwordsMatch = false;
+                            break;
+                        }
+                    }
+
+                    if (passwordsMatch) {
+                        // 여기에 가입 정보를 처리하는 로직을 추가할 수 있습니다.
+                        // 예: 데이터베이스에 정보 저장, 가입 확인 등
+                        JOptionPane.showMessageDialog(JoinForm.this, "비밀번호 설정이 완료되었습니다!");
+                    } else {
+                        JOptionPane.showMessageDialog(JoinForm.this, "비밀번호가 일치하지 않습니다. 다시 입력하세요.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(JoinForm.this, "비밀번호가 일치하지 않습니다. 다시 입력하세요.");
+                }
+            }
+        });
+
+
+        // 가입 버튼에 액션 리스너 추가
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 여기에 가입 정보를 처리하는 로직을 추가할 수 있습니다.
+                // 예: 데이터베이스에 정보 저장, 가입 확인 등
+                JOptionPane.showMessageDialog(JoinForm.this, "가입되었습니다!");
+            }
+        });
+    }
+
+    private void 레이블과필드추가(String 레이블, JTextField 필드, JPanel 패널) {
+        패널.add(new JLabel(레이블));
+        패널.add(필드);
+    }
+
+    private void 레이블과필드추가중복확인(String 레이블, JTextField 필드, JButton 버튼, JPanel 패널) {
+        패널.add(new JLabel(레이블));
+        JPanel idPanel = new JPanel(new FlowLayout(FlowLayout.LEFT)); // ID 필드와 중복확인 버튼을 담을 패널
+        idPanel.add(필드);
+        idPanel.add(버튼);
+        패널.add(idPanel);
+    }
+
+    private void 레이블과콤보추가(String 레이블,  JPanel 패널, JComboBox<String>... 콤보) {
+        패널.add(new JLabel(레이블));
+        JPanel 콤보패널 = new JPanel();
+        for (JComboBox<String> 콤보상자 : 콤보) {
+            콤보패널.add(콤보상자);
+        }
+        패널.add(콤보패널);
+    }
+
+    private void 레이블과필드추가콤보(String 레이블, JTextField 필드, JComboBox<String> 콤보, JPanel 패널) {
+        패널.add(new JLabel(레이블));
+        JPanel 이메일패널 = new JPanel(new FlowLayout(FlowLayout.LEFT)); // 이메일 필드와 도메인 선택 콤보박스를 담을 패널
+        이메일패널.add(필드);
+        이메일패널.add(new JLabel("@"));
+        이메일패널.add(콤보);
+        패널.add(이메일패널);
+    }
+
+    private void 레이블과콤보필드추가(String 레이블, JPanel 패널, JComboBox<String> 콤보, JTextField 중간필드,JTextField 마지막필드) {
+        패널.add(new JLabel(레이블));
+        JPanel 휴대폰패널 = new JPanel(new FlowLayout(FlowLayout.LEFT)); // 휴대폰 접두사와 번호를 담을 패널
+        휴대폰패널.add(콤보);
+        휴대폰패널.add(new JLabel("-"));
+        휴대폰패널.add(중간필드);
+        휴대폰패널.add(new JLabel("-"));
+        휴대폰패널.add(마지막필드);
+        패널.add(휴대폰패널);
+
+
+
+    }
+
+    //필드 사이즈 조절
+    private void setPreferredSize(JComponent component, int width, int height) {
+        component.setPreferredSize(new Dimension(width, height));
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new JoinForm().setVisible(true);
+            }
+        });
+    }
+}
+
