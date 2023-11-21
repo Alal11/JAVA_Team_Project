@@ -54,7 +54,7 @@ public class MainTestLoginfinish extends JFrame {
         JPanel topPanel = new JPanel(null);
         topPanel.setBackground(Color.WHITE);
 
-        ImageIcon logoIcon = new ImageIcon(MainTest.class.getResource("/kyr/image/logo.png"));
+        ImageIcon logoIcon = new ImageIcon(MainTest.class.getResource("/image/logo.png"));
         Image logoImage = logoIcon.getImage().getScaledInstance(200, 100, Image.SCALE_SMOOTH);
         ImageIcon resizedLogoIcon = new ImageIcon(logoImage);
         JLabel imgLabel = new JLabel(resizedLogoIcon);
@@ -66,12 +66,14 @@ public class MainTestLoginfinish extends JFrame {
         searchField.setBounds(400, 30, 500, 50); // 검색창의 위치와 크기 설정
 
         // 이미지 버튼
-        ImageIcon cartIcon = new ImageIcon(MainTest.class.getResource("/kyr/image/cart2.png"));
+        ImageIcon cartIcon = new ImageIcon(MainTest.class.getResource("/image/cart2.png"));
         Image cartImage = cartIcon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
         ImageIcon resizedCartIcon = new ImageIcon(cartImage);
         JButton cartButton = new JButton(resizedCartIcon);
         cartButton.setBounds(1100, 30, 50, 50); // 이미지 버튼의 위치와 크기 설정
         cartButton.setBorderPainted(false); // 배경 투명화 설정
+
+        //ㅐ
 
         cartButton.addActionListener(new ActionListener() {
             @Override

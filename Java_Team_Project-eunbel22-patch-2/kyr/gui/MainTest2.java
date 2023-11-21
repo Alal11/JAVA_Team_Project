@@ -31,61 +31,85 @@
             searchField.setBounds(400, 320, 500, 50); // 검색창 위치 및 크기 설정
             mainPanel.add(searchField); // 패널에 검색창 추가
 
-            // 카트 이미지 버튼 설정
-            ImageIcon cartIcon = new ImageIcon(MainTest.class.getResource("/image/cart2.png")); // 이미지 아이콘 로드
-            Image cartImage = cartIcon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH); // 이미지 크기 조절
+
+
+
+
+
+
+
+
+            // 카트 아이콘 로드
+            ImageIcon cartIcon = new ImageIcon(MainTest.class.getResource("/image/Cartcon.png"));
+            Image cartImage = cartIcon.getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH); // 이미지 크기 조절
             ImageIcon resizedCartIcon = new ImageIcon(cartImage); // 조절된 이미지 아이콘 생성
             JButton cartButton = new JButton(resizedCartIcon); // 이미지 아이콘을 담은 버튼 생성
-            cartButton.setBounds(1100, 30, 50, 50); // 버튼의 위치 및 크기 설정
+            cartButton.setBounds(550, 400, 65, 65); // 버튼의 위치 및 크기 설정
+            JLabel cartLabel = new JLabel("장바구니", resizedCartIcon, SwingConstants.CENTER); // "카트" 텍스트와 카트 아이콘을 담은 라벨 생성
+            cartLabel.setHorizontalTextPosition(SwingConstants.CENTER); // 텍스트를 아이콘 가운데에 위치시킴
+            cartLabel.setVerticalTextPosition(SwingConstants.BOTTOM); // 텍스트를 아이콘 아래에 위치시킴
+            cartLabel.setBounds(550, 400, 65, 85); // 라벨의 위치 및 크기 설정
             cartButton.setBorderPainted(false); // 버튼 테두리 표시 안 함
             cartButton.addActionListener(e -> { // 카트 버튼에 대한 액션 설정
-                new Cart();
-                setVisible(false);
+                // 카트 기능 구현
             });
+            mainPanel.add(cartLabel); // 패널에 카트 라벨 추가
             mainPanel.add(cartButton); // 패널에 카트 버튼 추가
 
 
-
-
-
-            /////이게 로그인 아이콘
-            ImageIcon loginIcon = new ImageIcon(MainTest.class.getResource("/image/loginIcon.png")); // 로그인 이미지 아이콘 로드
-            Image loginImage = loginIcon.getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH); // 이미지 크기 조절
-            ImageIcon resizedLoginIcon = new ImageIcon(loginImage); // 조절된 이미지 아이콘 생성
-            JButton loginButton = new JButton(resizedLoginIcon); // 이미지 아이콘을 담은 버튼 생성
-            loginButton.setBounds(550, 400, 65, 65); // 버튼의 위치 및 크기 설정
-            JLabel loginLabel = new JLabel("로그인", resizedLoginIcon, SwingConstants.CENTER); // "로그인" 텍스트와 로그인 아이콘을 담은 라벨 생성
-            loginLabel.setHorizontalTextPosition(SwingConstants.CENTER); // 텍스트를 아이콘 가운데에 위치시킴
-            loginLabel.setVerticalTextPosition(SwingConstants.BOTTOM); // 텍스트를 아이콘 아래에 위치시킴
-            loginLabel.setBounds(550, 400, 65, 85); // 라벨의 위치 및 크기 설정
-            loginButton.setBorderPainted(false); // 버튼 테두리 표시 안 함
-            loginButton.addActionListener(e -> { // 로그인 버튼에 대한 액션 설정
-                new Login();
-                setVisible(false);
+            ImageIcon menuSearchIcon = new ImageIcon(MainTest.class.getResource("/image/menuserch.png"));
+            Image menuSearchImage = menuSearchIcon.getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH); // 이미지 크기 조절
+            ImageIcon resizedMenuSearchIcon = new ImageIcon(menuSearchImage); // 조절된 이미지 아이콘 생성
+            JButton menuSearchButton = new JButton(resizedMenuSearchIcon); // 이미지 아이콘을 담은 버튼 생성
+            menuSearchButton.setBounds(420, 400, 65, 65); // 버튼의 위치 및 크기 설정
+            JLabel menuSearchLabel = new JLabel("메뉴 검색", resizedMenuSearchIcon, SwingConstants.CENTER); // "메뉴 검색" 텍스트와 menuserch 아이콘을 담은 라벨 생성
+            menuSearchLabel.setHorizontalTextPosition(SwingConstants.CENTER); // 텍스트를 아이콘 가운데에 위치시킴
+            menuSearchLabel.setVerticalTextPosition(SwingConstants.BOTTOM); // 텍스트를 아이콘 아래에 위치시킴
+            menuSearchLabel.setBounds(420, 400, 65, 85); // 라벨의 위치 및 크기 설정
+            menuSearchButton.setBorderPainted(false); // 버튼 테두리 표시 안 함
+            menuSearchButton.addActionListener(e -> { // menuserch 버튼에 대한 액션 설정
+                // menuserch 기능 구현
             });
-            mainPanel.add(loginLabel); // 패널에 로그인 라벨 추가
-            mainPanel.add(loginButton); // 패널에 로그인 버튼 추가
+            mainPanel.add(menuSearchLabel); // 패널에 menuserch 라벨 추가
+            mainPanel.add(menuSearchButton); // 패널에 menuserch 버튼 추가
 
 
-
-
-            /////이게 로그인 아이콘
-            ImageIcon signupIcon = new ImageIcon(MainTest.class.getResource("/image/signupIcon.png")); // 회원가입 이미지 아이콘 로드
-            Image signupImage = signupIcon.getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH); // 이미지 크기 조절
-            ImageIcon resizedSignupIcon = new ImageIcon(signupImage); // 조절된 이미지 아이콘 생성
-            JButton signupButton = new JButton(resizedSignupIcon); // 이미지 아이콘을 담은 버튼 생성
-            signupButton.setBounds(680, 400, 65, 65); // 버튼의 위치 및 크기 설정
-            JLabel signupLabel = new JLabel("회원가입", resizedSignupIcon, SwingConstants.CENTER); // "회원가입" 텍스트와 회원가입 아이콘을 담은 라벨 생성
-            signupLabel.setHorizontalTextPosition(SwingConstants.CENTER); // 텍스트를 아이콘 가운데에 위치시킴
-            signupLabel.setVerticalTextPosition(SwingConstants.BOTTOM); // 텍스트를 아이콘 아래에 위치시킴
-            signupLabel.setBounds(680, 400, 65, 85); // 라벨의 위치 및 크기 설정
-            signupButton.setBorderPainted(false); // 버튼 테두리 표시 안 함
-            signupButton.addActionListener(e -> { // 회원가입 버튼에 대한 액션 설정
-                new SignUp();
-                setVisible(false);
+            /// Myref 아이콘 로드
+            ImageIcon myRefIcon = new ImageIcon(MainTest.class.getResource("/image/Myref.png"));
+            Image myRefImage = myRefIcon.getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH); // 이미지 크기 조절
+            ImageIcon resizedMyRefIcon = new ImageIcon(myRefImage); // 조절된 이미지 아이콘 생성
+            JButton myRefButton = new JButton(resizedMyRefIcon); // 이미지 아이콘을 담은 버튼 생성
+            myRefButton.setBounds(680, 400, 65, 65); // 버튼의 위치 및 크기 설정
+            JLabel myRefLabel = new JLabel("Myref", resizedMyRefIcon, SwingConstants.CENTER); // "Myref" 텍스트와 Myref 아이콘을 담은 라벨 생성
+            myRefLabel.setHorizontalTextPosition(SwingConstants.CENTER); // 텍스트를 아이콘 가운데에 위치시킴
+            myRefLabel.setVerticalTextPosition(SwingConstants.BOTTOM); // 텍스트를 아이콘 아래에 위치시킴
+            myRefLabel.setBounds(680, 400, 65, 85); // 라벨의 위치 및 크기 설정
+            myRefButton.setBorderPainted(false); // 버튼 테두리 표시 안 함
+            myRefButton.addActionListener(e -> { // Myref 버튼에 대한 액션 설정
+                // Myref 기능 구현
             });
-            mainPanel.add(signupLabel); // 패널에 회원가입 라벨 추가
-            mainPanel.add(signupButton); // 패널에 회원가입 버튼 추가
+            mainPanel.add(myRefLabel); // 패널에 Myref 라벨 추가
+            mainPanel.add(myRefButton); // 패널에 Myref 버튼 추가
+
+
+
+            // MyPage 아이콘 로드
+            ImageIcon myPageIcon = new ImageIcon(MainTest.class.getResource("/image/MyPage.png"));
+            Image myPageImage = myPageIcon.getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH); // 이미지 크기 조절
+            ImageIcon resizedMyPageIcon = new ImageIcon(myPageImage); // 조절된 이미지 아이콘 생성
+            JButton myPageButton = new JButton(resizedMyPageIcon); // 이미지 아이콘을 담은 버튼 생성
+            myPageButton.setBounds(810, 400, 65, 65); // 버튼의 위치 및 크기 설정
+            JLabel myPageLabel = new JLabel("MyPage", resizedMyPageIcon, SwingConstants.CENTER); // "MyPage" 텍스트와 MyPage 아이콘을 담은 라벨 생성
+            myPageLabel.setHorizontalTextPosition(SwingConstants.CENTER); // 텍스트를 아이콘 가운데에 위치시킴
+            myPageLabel.setVerticalTextPosition(SwingConstants.BOTTOM); // 텍스트를 아이콘 아래에 위치시킴
+            myPageLabel.setBounds(810, 400, 65, 85); // 라벨의 위치 및 크기 설정
+            myPageButton.setBorderPainted(false); // 버튼 테두리 표시 안 함
+            myPageButton.addActionListener(e -> { // MyPage 버튼에 대한 액션 설정
+                // MyPage 기능 구현
+            });
+            mainPanel.add(myPageLabel); // 패널에 MyPage 라벨 추가
+            mainPanel.add(myPageButton); // 패널에 MyPage 버튼 추가
+
 
 
 
@@ -131,6 +155,6 @@
         }
 
         public static void main(String[] args) {
-            SwingUtilities.invokeLater(MainTest::new);
+            SwingUtilities.invokeLater(MainTest2::new);
         }
     }
