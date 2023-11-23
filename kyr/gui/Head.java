@@ -29,12 +29,28 @@ public class Head extends JPanel {
         imgLabel.setBounds(30, 20, 70, 60); // 이미지의 위치와 크기 설정
         headerPanel.add(imgLabel);
 
-        // "cookeryket" 텍스트
-        JLabel titleLabel = new JLabel("cookeryket");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 50));
-        titleLabel.setForeground(Color.WHITE);
-        titleLabel.setBounds(100, 20, 500, 60);
-        headerPanel.add(titleLabel);
+
+        // "cookeryket" 버튼
+        JButton titleButton = new JButton("cookeryket");
+        titleButton.setFont(new Font("Arial", Font.BOLD, 50));
+        titleButton.setBounds(100, 20, 300, 60);
+        titleButton.setBackground(new Color(123, 199, 139)); // 배경 색상 설정
+        titleButton.setForeground(Color.WHITE); // 글씨 색상 설정
+        titleButton.setBorder(BorderFactory.createLineBorder(new Color(123, 199, 139))); // 테두리 색상 설정
+        titleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // "My Page" 버튼을 클릭하면 MyPageOrder 창을 열도록 함
+                SwingUtilities.invokeLater(() -> {
+                    MainTestLoginfinish mainTestLoginfinish = new MainTestLoginfinish();
+                    mainTestLoginfinish.setVisible(true);
+
+                    // 현재 창을 닫음
+                    ((JFrame) SwingUtilities.getWindowAncestor(titleButton)).dispose();
+                });
+            }
+        });
+        headerPanel.add(titleButton);
 
         // "땡땡땡님" 텍스트
         JLabel nameLabel = new JLabel("땡땡땡님");
@@ -53,10 +69,18 @@ public class Head extends JPanel {
         myPageButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // 여기에 mypage 버튼이 클릭되었을 때의 동작을 추가
+                // "My Page" 버튼을 클릭하면 MyPageOrder 창을 열도록 함
+                SwingUtilities.invokeLater(() -> {
+                    MyPageOrder myPageOrder = new MyPageOrder();
+                    myPageOrder.setVisible(true);
+
+                    // 현재 창을 닫음
+                    ((JFrame) SwingUtilities.getWindowAncestor(myPageButton)).dispose();
+                });
             }
         });
         headerPanel.add(myPageButton);
+
 
         // "로그아웃" 버튼
         JButton logoutButton = new JButton("로그아웃");
@@ -68,7 +92,14 @@ public class Head extends JPanel {
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // 여기에 로그아웃 버튼이 클릭되었을 때의 동작을 추가
+                // "My Page" 버튼을 클릭하면 MyPageOrder 창을 열도록 함
+                SwingUtilities.invokeLater(() -> {
+                    MainTest mainTest = new MainTest();
+                    mainTest.setVisible(true);
+
+                    // 현재 창을 닫음
+                    ((JFrame) SwingUtilities.getWindowAncestor(logoutButton)).dispose();
+                });
             }
         });
         headerPanel.add(logoutButton);

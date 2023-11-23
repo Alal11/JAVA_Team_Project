@@ -26,7 +26,8 @@ public class MyPageOrder extends JFrame {
         // 패널 추가 (이 부분에 내용을 추가할 수 있습니다.)
         JPanel panel = new JPanel();
         panel.setLayout(null); // 절대 위치 레이아웃으로 설정
-        panel.setBackground(new Color(226, 226, 226)); // 패널 배경색을 흰색으로 설정
+        panel.setBackground(new Color(242, 242, 242)); // 패널 배경색을 흰색으로 설정
+        //panel.setBackground(Color.WHITE); // 패널 배경색을 흰색으로 설정
         panel.setBounds(100, 100, 270, 760); // 위치 및 크기 조정
 
         // 1. "My page" 메인 텍스트 추가 (좌측 상단에)
@@ -59,7 +60,7 @@ public class MyPageOrder extends JFrame {
         });
         panel.add(orderHistoryButton);
 
-        JButton modifyUserInfoButton = new JButton("회원정보 수정            >");
+        JButton modifyUserInfoButton = new JButton("개인정보 수정            >");
         modifyUserInfoButton.setForeground(Color.LIGHT_GRAY); // Set text color to light gray
         modifyUserInfoButton.setFont(new Font("맑은 고딕", Font.BOLD, 20));
         modifyUserInfoButton.setHorizontalAlignment(SwingConstants.CENTER);
@@ -84,15 +85,15 @@ public class MyPageOrder extends JFrame {
         JPanel subpanel = new JPanel();
         subpanel.setLayout(null); // 절대 위치 레이아웃으로 설정
         subpanel.setBackground(Color.WHITE); // 패널 배경색을 흰색으로 설정
-        subpanel.setBounds(370, 100, 900, 65); // 위치 및 크기 조정
+        subpanel.setBounds(390, 120, 900, 65); // 위치 및 크기 조정
 
         // 3. 메인 텍스트 우측에 가로선과 "주문내역" label 추가
         JSeparator horizontalLine = new JSeparator(JSeparator.HORIZONTAL);
-        horizontalLine.setBounds(15, 64, 795, 50); // 위치 및 크기 조정
+        horizontalLine.setBounds(15, 64, 775, 50); // 위치 및 크기 조정
         subpanel.add(horizontalLine);
 
         JLabel orderLabel = new JLabel("주문내역");
-        orderLabel.setFont(new Font("맑은 고딕", Font.BOLD, 40));
+        orderLabel.setFont(new Font("맑은 고딕", Font.BOLD, 35));
         orderLabel.setHorizontalAlignment(SwingConstants.LEFT);
         orderLabel.setBounds(25, 2, 300, 60); // 위치 및 크기 조정
         subpanel.add(orderLabel);
@@ -101,7 +102,7 @@ public class MyPageOrder extends JFrame {
         JPanel prouductpanel = new JPanel();
         prouductpanel.setLayout(null); // 절대 위치 레이아웃으로 설정
         prouductpanel.setBackground(Color.white); // 패널 배경색을 흰색으로 설정
-        prouductpanel.setBounds(370, 165, 900, 760); // 위치 및 크기 조정
+        prouductpanel.setBounds(390, 185, 900, 760); // 위치 및 크기 조정
 
 
 
@@ -176,7 +177,7 @@ public class MyPageOrder extends JFrame {
             prouductpanel.add(imageLabel);
             dateLabel.setBounds(90, 15 + yOffset, 150, 50);
             prouductpanel.add(dateLabel);
-            detailButton.setBounds(640, 15 + yOffset, 140, 50);
+            detailButton.setBounds(620, 15 + yOffset, 140, 50);
             prouductpanel.add(detailButton);
 
             productNameLabel.setBounds(40, 75 + yOffset, 70, 20);

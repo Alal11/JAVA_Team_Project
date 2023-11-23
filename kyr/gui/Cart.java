@@ -20,29 +20,31 @@ public class Cart extends JFrame {
         mainpanel.setLayout(null);
         mainpanel.setBackground(Color.WHITE);
 
+        // 헤더 불러오기
+        Head head = new Head();
+        JPanel headerPanel = head.getHeaderPanel();
+
 
         JLabel titleLabel = new JLabel("장바구니");
         titleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 40));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        titleLabel.setBounds(540, 0, 200, 190);
+        titleLabel.setBounds(540, 130, 200, 50);
         add(titleLabel);
 
         JSeparator horizontalLine = new JSeparator(JSeparator.HORIZONTAL);
-        horizontalLine.setBounds(80, 180, 750, 70); // 위치 및 크기 조정
+        horizontalLine.setBounds(100, 210, 650, 2); // 위치 및 크기 조정
         horizontalLine.setForeground(Color.LIGHT_GRAY); // Set line color
         add(horizontalLine);
 
         JPanel productPanel = new JPanel();
         productPanel.setLayout(null);
-        productPanel.setBounds(80, 190, 750, 80);
+        productPanel.setBounds(100, 220, 660, 80);
         productPanel.setBackground(Color.WHITE);
-
 
         JTextField productNameField = new JTextField();
         productNameField.setBounds(0, 10, 200, 50);
         productNameField.setHorizontalAlignment(SwingConstants.LEFT);
         productPanel.add(productNameField);
-
 
         decreaseButton = new JButton("-");
         decreaseButton.setBounds(250, 20, 30, 30);
@@ -66,15 +68,13 @@ public class Cart extends JFrame {
         increaseButton.setBorder(BorderFactory.createLineBorder(Color.black));
         increaseButton.setMargin(new Insets(0, 0, 0, 0));
 
-        // ActionListener를 사용하여 "-" 버튼 클릭 시 동작 정의
+
         decreaseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 decreaseQuantity();
             }
         });
-
-        // ActionListener를 사용하여 "+" 버튼 클릭 시 동작 정의
         increaseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -89,9 +89,9 @@ public class Cart extends JFrame {
         productPanel.add(quantityField);
         productPanel.add(increaseButton);
 
-
         JTextField priceField = new JTextField();
         priceField.setBounds(425, 20, 150, 30);
+        productPanel.add(priceField);
 
         JButton deleteButton = new JButton("X");
         deleteButton.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -102,19 +102,6 @@ public class Cart extends JFrame {
         deleteButton.setBackground(Color.WHITE);
         deleteButton.setBorder(BorderFactory.createLineBorder(Color.WHITE)); // 테두리 색을 흰색으로 설
 
-
-
-        JSeparator horizontalLine2 = new JSeparator(JSeparator.HORIZONTAL);
-        horizontalLine2.setBounds(0, 79, 650, 70); // 위치 및 크기 조정
-        horizontalLine2.setForeground(Color.LIGHT_GRAY); // Set line color
-        productPanel.add(horizontalLine2);
-
-
-        productPanel.add(priceField);
-        productPanel.add(deleteButton);
-
-        add(productPanel);
-
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -124,23 +111,28 @@ public class Cart extends JFrame {
                 productPanel.repaint();
             }
         });
+        productPanel.add(deleteButton);
 
-
+        JSeparator horizontalLine2 = new JSeparator(JSeparator.HORIZONTAL);
+        horizontalLine2.setBounds(0, 79, 650, 70); // 위치 및 크기 조정
+        horizontalLine2.setForeground(Color.LIGHT_GRAY); // Set line color
+        productPanel.add(horizontalLine2);
 
         JPanel orderPanel = new JPanel();
         orderPanel.setLayout(null);
-        orderPanel.setBounds(880, 180, 350, 160);
+        orderPanel.setBounds(810, 210, 350, 160);
         orderPanel.setBackground(Color.WHITE);
         orderPanel.setBorder(new LineBorder(Color.LIGHT_GRAY,1));
-
 
         JLabel totalAmountLabel = new JLabel("결제예정금액");
         totalAmountLabel.setFont(new Font("맑은 고딕", Font.BOLD, 15));
         totalAmountLabel.setHorizontalAlignment(SwingConstants.LEFT);
         totalAmountLabel.setBounds(30, 20, 100, 50);
+        orderPanel.add(totalAmountLabel);
 
         JTextField totalAmountField = new JTextField();
         totalAmountField.setBounds(130, 20, 200, 50);
+        orderPanel.add(totalAmountField);
 
         JButton orderButton = new JButton("주문하기");
         orderButton.setFont(new Font("맑은 고딕", Font.BOLD, 15));
@@ -148,6 +140,7 @@ public class Cart extends JFrame {
         orderButton.setBorder(new Login.RoundedBorder(10, new Color(39, 185, 89)));
         orderButton.setBackground(Color.WHITE); // 하얀색 배경
         orderButton.setForeground(new Color(39, 185, 89)); // 연두색 글씨
+        orderPanel.add(orderButton);
 
         orderButton.addActionListener(new ActionListener() {
             @Override
@@ -162,14 +155,10 @@ public class Cart extends JFrame {
             }
         });
 
-        orderPanel.add(totalAmountLabel);
-        orderPanel.add(totalAmountField);
-        orderPanel.add(orderButton);
+        add(productPanel);
         add(orderPanel);
+        add(headerPanel);
         add(mainpanel);
-
-
-
         setVisible(true);
     }
 
@@ -197,7 +186,6 @@ public class Cart extends JFrame {
         if (currentQuantity > 1) {
             quantityField.setText(String.valueOf(currentQuantity - 1));
         }
-        // decreaseQuantity 이후에 decreaseButton의 글자색을 업데이트
         updateDecreaseButtonTextColor();
     }
 

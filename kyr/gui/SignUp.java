@@ -41,6 +41,8 @@ public class SignUp extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
+
+
         JPanel mainpanel = new JPanel();
         mainpanel.setLayout(null);
         mainpanel.setBackground(Color.WHITE);
@@ -129,6 +131,7 @@ public class SignUp extends JFrame {
 
 
         registerButton = new JButton("회원가입");
+        registerButton.setFont(new Font("맑은 고딕", Font.BOLD, 16));
         registerButton.setBounds(590, 610, 100, 50);
         registerButton.setBorder(new Login.RoundedBorder(10,Color.WHITE));
         registerButton.setBackground(new Color(29, 185, 89)); // 연두색 배경
@@ -222,7 +225,7 @@ public class SignUp extends JFrame {
         });
 
 
-        // 아이디 입력 필드에 한글 입력 방지
+       /* // 아이디 입력 필드에 한글 입력 방지
         idField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -353,7 +356,7 @@ public class SignUp extends JFrame {
                     e.consume();
                 }
             }
-        });
+        });*/
 
 
         // back 버튼 이벤트 처리
@@ -370,7 +373,7 @@ public class SignUp extends JFrame {
 
 
         mainpanel.add(registerLabel);
-        mainpanel.add(IDLabel);
+        /*mainpanel.add(IDLabel);
         mainpanel.add(idField);
         mainpanel.add(duplicateCheckIDButton);
         mainpanel.add(PWLabel);
@@ -387,11 +390,15 @@ public class SignUp extends JFrame {
         mainpanel.add(addressLabel);
         mainpanel.add(addressField);
         mainpanel.add(postalLabel);
-        mainpanel.add(postalCodeField);
+        mainpanel.add(postalCodeField);*/
         mainpanel.add(registerButton);
         mainpanel.add(backButton);
         movepanel.add(mainpanel);
-        movepanel.remove(backButton);
+
+        // 회원가입틀 불러오기
+        SignUppart signUpPanel = new SignUppart();
+        signUpPanel.setBounds(210, 100, 810, 490); // 헤더 위치 및 크기 조정
+        getContentPane().add(signUpPanel);
         add(mainpanel);
 
 
@@ -429,13 +436,11 @@ public class SignUp extends JFrame {
 
     static class RoundedBorder extends AbstractBorder {
         private final int radius;
-        private final Color outsideColor;
-        private final Color insideColor;
+
 
         public RoundedBorder(int radius, Color outsideColor, Color insideColor) {
             this.radius = radius;
-            this.outsideColor = outsideColor;
-            this.insideColor = insideColor;
+
         }
 
 

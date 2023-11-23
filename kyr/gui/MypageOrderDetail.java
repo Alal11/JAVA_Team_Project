@@ -27,7 +27,8 @@ public class MypageOrderDetail extends JFrame {
         // 패널 추가 (이 부분에 내용을 추가할 수 있습니다.)
         JPanel panel = new JPanel();
         panel.setLayout(null); // 절대 위치 레이아웃으로 설정
-        panel.setBackground(new Color(226, 226, 226)); // 패널 배경색을 흰색으로 설정
+        panel.setBackground(new Color(242, 242, 242)); // 패널 배경색을 흰색으로 설정
+        //panel.setBackground(Color.WHITE); // 패널 배경색을 흰색으로 설정
         panel.setBounds(100, 100, 270, 760); // 위치 및 크기 조정
 
         // 1. "My page" 메인 텍스트 추가 (좌측 상단에)
@@ -60,7 +61,7 @@ public class MypageOrderDetail extends JFrame {
         });
         panel.add(orderHistoryButton);
 
-        JButton modifyUserInfoButton = new JButton("회원정보 수정            >");
+        JButton modifyUserInfoButton = new JButton("개인정보 수정            >");
         modifyUserInfoButton.setForeground(Color.LIGHT_GRAY); // Set text color to light gray
         modifyUserInfoButton.setFont(new Font("맑은 고딕", Font.BOLD, 20));
         modifyUserInfoButton.setHorizontalAlignment(SwingConstants.CENTER);
@@ -85,15 +86,15 @@ public class MypageOrderDetail extends JFrame {
         JPanel subpanel = new JPanel();
         subpanel.setLayout(null); // 절대 위치 레이아웃으로 설정
         subpanel.setBackground(Color.WHITE); // 패널 배경색을 흰색으로 설정
-        subpanel.setBounds(370, 100, 900, 65); // 위치 및 크기 조정
+        subpanel.setBounds(390, 120, 900, 65); // 위치 및 크기 조정
 
-     /*   // 3. 메인 텍스트 우측에 가로선과 "주문내역" label 추가
+        // 3. 메인 텍스트 우측에 가로선과 "주문내역" label 추가
         JSeparator horizontalLine = new JSeparator(JSeparator.HORIZONTAL);
-        horizontalLine.setBounds(15, 64, 795, 50); // 위치 및 크기 조정
-        subpanel.add(horizontalLine);*/
+        horizontalLine.setBounds(15, 64, 775, 50); // 위치 및 크기 조정
+        subpanel.add(horizontalLine);
 
-        JLabel orderLabel = new JLabel("주문내역 상세");
-        orderLabel.setFont(new Font("맑은 고딕", Font.BOLD, 40));
+        JLabel orderLabel = new JLabel("주문내역");
+        orderLabel.setFont(new Font("맑은 고딕", Font.BOLD, 35));
         orderLabel.setHorizontalAlignment(SwingConstants.LEFT);
         orderLabel.setBounds(25, 2, 300, 60); // 위치 및 크기 조정
         subpanel.add(orderLabel);
@@ -102,16 +103,16 @@ public class MypageOrderDetail extends JFrame {
         JPanel prouductpanel = new JPanel();
         prouductpanel.setLayout(null); // 절대 위치 레이아웃으로 설정
         prouductpanel.setBackground(Color.WHITE); // 패널 배경색을 흰색으로 설정
-        prouductpanel.setBounds(370, 165, 810, 280); // 위치 및 크기 조정
+        prouductpanel.setBounds(390, 200, 810, 270); // 위치 및 크기 조정
 
 
         // 4. 메인 버튼들 좌측에 가로선, "주문번호" label, "전체 다시 담기" 버튼 추가
-      /*  JSeparator horizontalLine2 = new JSeparator(JSeparator.HORIZONTAL);
-        horizontalLine2.setBounds(30, 40, 780, 70); // 위치 및 크기 조정
+        JSeparator horizontalLine2 = new JSeparator(JSeparator.HORIZONTAL);
+        horizontalLine2.setBounds(30, 40, 760, 70); // 위치 및 크기 조정
         horizontalLine2.setForeground(Color.LIGHT_GRAY); // Set line color
-        prouductpanel.add(horizontalLine2);*/
+        prouductpanel.add(horizontalLine2);
 
-        JPanel 주문번호패널 = new JPanel() {
+       /* JPanel 주문번호패널 = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 // 수평으로 그라데이션 그리기
@@ -124,40 +125,42 @@ public class MypageOrderDetail extends JFrame {
         };
         주문번호패널.setLayout(null); // 수동 위치 지정을 위해 레이아웃을 null로 설정
         주문번호패널.setBackground(new Color(123, 199, 139)); // 배경색을 초록색으로 설정
-        주문번호패널.setBounds(30, 5, 810, 30); // 위치 및 크기 조정
+        주문번호패널.setBounds(30, 5, 810, 30); // 위치 및 크기 조정*/
 
         JLabel dateLabel = new JLabel("주문번호");
         dateLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
         dateLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        dateLabel.setBounds(10, 0, 780, 30); // 위치 및 크기 조정
-        주문번호패널.add(dateLabel);
-        prouductpanel.add(주문번호패널);
+        dateLabel.setBounds(40, 0, 760, 30); // 위치 및 크기 조정
+        /*주문번호패널.add(dateLabel);
+        prouductpanel.add(주문번호패널);*/
+        prouductpanel.add(dateLabel);
 
 
         // 배송패널 추가 (이 부분에 내용을 추가할 수 있습니다.)
         JPanel deliverypanel = new JPanel();
         deliverypanel.setLayout(null); // 절대 위치 레이아웃으로 설정
         deliverypanel.setBackground(Color.WHITE); // 패널 배경색을 흰색으로 설정
-        deliverypanel.setBounds(370, 445, 810, 280); // 위치 및 크기 조정
+        deliverypanel.setBounds(390, 465, 810, 280); // 위치 및 크기 조정
 
 
         //5. 메인 버튼들 좌측에 가로선, "배송정보" label 추가
-      /*  JSeparator horizontalLine3 = new JSeparator(JSeparator.HORIZONTAL);
-        horizontalLine3.setBounds(30, 40, 780, 70); // 위치 및 크기 조정
+        JSeparator horizontalLine3 = new JSeparator(JSeparator.HORIZONTAL);
+        horizontalLine3.setBounds(30, 40, 760, 70); // 위치 및 크기 조정
         horizontalLine3.setForeground(Color.LIGHT_GRAY); // Set line color
-        deliverypanel.add(horizontalLine3);*/
+        deliverypanel.add(horizontalLine3);
 
-        JPanel 배송정보패널 = new JPanel();
+      /*  JPanel 배송정보패널 = new JPanel();
         배송정보패널.setLayout(null); // 수동 위치 지정을 위해 레이아웃을 null로 설정
         배송정보패널.setBackground(new Color(123, 199, 139)); // 배경색을 초록색으로 설정
-        배송정보패널.setBounds(30, 5, 810, 30); // 위치 및 크기 조정
+        배송정보패널.setBounds(30, 5, 810, 30); // 위치 및 크기 조정*/
 
         JLabel OrederdataLabel = new JLabel("배송정보");
         OrederdataLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
         OrederdataLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        OrederdataLabel.setBounds(10, 0, 100, 30); // 위치 및 크기 조정
-        배송정보패널.add(OrederdataLabel);
-        deliverypanel.add(배송정보패널);
+        OrederdataLabel.setBounds(40, 0, 100, 30); // 위치 및 크기 조정
+        /*배송정보패널.add(OrederdataLabel);
+        deliverypanel.add(배송정보패널);*/
+        deliverypanel.add(OrederdataLabel);
 
 
 
@@ -265,4 +268,5 @@ public class MypageOrderDetail extends JFrame {
          * */
     }
 }
+
 
