@@ -166,6 +166,8 @@ public class SignUppart extends JPanel {
                 } else {
                     JOptionPane.showMessageDialog(SignUppart.this, "이미 사용 중인 아이디입니다. 다른 아이디를 입력하세요.");
                 }
+
+                //System.out.println(idField.getText());
             }
         });
 
@@ -197,8 +199,13 @@ public class SignUppart extends JPanel {
             @Override
             public void actionPerformed (ActionEvent e){
                 // Check if password or confirmPassword fields are empty
-                if (new String(passwordField.getPassword()).isEmpty() || new String(confirmPasswordField.getPassword()).isEmpty()) {
+                if (new String(passwordField.getPassword()).isEmpty()) {
                     JOptionPane.showMessageDialog(SignUppart.this, "비밀번호를 입력하세요.");
+                    return;
+                }
+
+                if (new String(confirmPasswordField.getPassword()).isEmpty()) {
+                    JOptionPane.showMessageDialog(SignUppart.this, "비밀번호확인도 입력하세요.");
                     return;
                 }
 
@@ -288,6 +295,17 @@ public class SignUppart extends JPanel {
 
 
 
+// 패널 추가 (이 부분에 내용을 추가할 수 있습니다.)
+        JPanel aPanel = new JPanel();
+        //memberPanel.setLayout(null); // 절대 위치 레이아웃으로 설정
+        //memberPanel.setBackground(Color.WHITE); // 헤더 배경색을 녹색으로 설정
+        //memberPanel.setBounds(370, 165, 810, 490); // 헤더 위치 및 크기 조정
+        //memberPanel.setBounds(0, 0, 810, 490); // 헤더 위치 및 크기 조정
+        aPanel.add(memberPanel);
+        aPanel.remove(postalLabel);
+
+
+
         add(memberPanel);
         //add(mainPanel);
     }
@@ -314,6 +332,38 @@ public class SignUppart extends JPanel {
 
         frame.setVisible(true);
     }
+
+    public JTextField getIdField() {
+        return idField;
+    }
+
+
+    public JTextField getPasswordField() {
+        return passwordField;
+    }
+
+    public JTextField getconPasswordField() {
+        return passwordField;
+    }
+
+    public JTextField getNameField() {
+        return nameField;
+    }
+    public JTextField getEmailField() {
+        return emailField;
+    }
+    public JTextField getPhoneField() {
+        return phoneField;
+    }
+
+    public JTextField getAddressField() {
+        return addressField;
+    }
+
+    public JTextField getPostalCodeField() {
+        return postalCodeField;
+    }
+
     static class RoundedBorder extends AbstractBorder {
         private final int radius;
         private final Color outsideColor;
@@ -380,3 +430,6 @@ public class SignUppart extends JPanel {
         System.out.println("휴대폰 번호: " + phone);
         System.out.println("주소: " + address);
         }*/
+
+
+//이메일에 @이 미입력시 이메일 입력이 잘못되었습니다.라는 문구 띄우기

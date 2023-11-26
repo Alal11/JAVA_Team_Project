@@ -73,8 +73,8 @@ public class MypageOrderDetail extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // "My Page" 버튼을 클릭하면 MyPageOrder 창을 열도록 함
                 SwingUtilities.invokeLater(() -> {
-                    MyPageEditMember myPageEditMember = new MyPageEditMember();
-                    myPageEditMember.setVisible(true);
+                    checkpw checkpw = new checkpw();
+                    checkpw.setVisible(true);
 
                     // 현재 창을 닫음
                     ((JFrame) SwingUtilities.getWindowAncestor(modifyUserInfoButton)).dispose();
