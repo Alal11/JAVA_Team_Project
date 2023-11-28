@@ -21,7 +21,7 @@ public class Cart extends JFrame {
         mainpanel.setBackground(Color.WHITE);
 
         // 헤더 불러오기
-        Head2 head = new Head2();
+        Head head = new Head();
         JPanel headerPanel = head.getHeaderPanel();
 
 
@@ -41,8 +41,16 @@ public class Cart extends JFrame {
         productPanel.setBounds(100, 220, 660, 80);
         productPanel.setBackground(Color.WHITE);
 
+
+        ImageIcon foodIcon = new ImageIcon(MainTest.class.getResource("/image/ex)food.png"));
+        Image foodImage = foodIcon.getImage().getScaledInstance(50, 55, Image.SCALE_SMOOTH);
+        ImageIcon fIcon = new ImageIcon(foodImage);
+        JLabel FoodLabel = new JLabel(fIcon);
+        FoodLabel.setBounds(0, 5, 50, 60);
+        productPanel.add(FoodLabel);
+
         JTextField productNameField = new JTextField();
-        productNameField.setBounds(0, 10, 200, 50);
+        productNameField.setBounds(60, 10, 140, 50);
         productNameField.setHorizontalAlignment(SwingConstants.LEFT);
         productPanel.add(productNameField);
 
@@ -112,6 +120,30 @@ public class Cart extends JFrame {
             }
         });
         productPanel.add(deleteButton);
+
+
+
+        JButton checkbutton= new JButton("확인");
+        checkbutton.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+        checkbutton.setBounds(350, 600, 100, 50);
+        checkbutton.setBorder(new Login.RoundedBorder(10,Color.WHITE));
+        checkbutton.setBackground(Color.WHITE); // 연두색 배경
+        checkbutton.setForeground(new Color(29, 185, 89)); // 흰색 글씨
+        add(checkbutton);
+
+        checkbutton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // "My Page" 버튼을 클릭하면 MyPageOrder 창을 열도록 함
+                SwingUtilities.invokeLater(() -> {
+                    MyPageEditMember myPageEditMember = new MyPageEditMember();
+                    myPageEditMember.setVisible(true);
+
+                    // 현재 창을 닫음
+                    ((JFrame) SwingUtilities.getWindowAncestor(checkbutton)).dispose();
+                });
+            }
+        });
 
         JSeparator horizontalLine2 = new JSeparator(JSeparator.HORIZONTAL);
         horizontalLine2.setBounds(0, 79, 650, 70); // 위치 및 크기 조정
@@ -199,4 +231,3 @@ public class Cart extends JFrame {
 
 //상품이 없을 시
 // 장바구니에 담긴 상품이 없습니다.(밝은 회색글씨)
-

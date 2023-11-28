@@ -60,7 +60,7 @@ public class Head extends JPanel {
         headerPanel.add(nameLabel);
 
         // "mypage" 버튼
-        JButton myPageButton = new JButton("mypage");
+        JButton myPageButton = new JButton("MyPage");
         myPageButton.setFont(new Font("맑은 고딕", Font.BOLD, 16));
         myPageButton.setBounds(915, 3, 70, 40);
         myPageButton.setBackground(new Color(123, 199, 139)); // 배경 색상 설정
@@ -111,7 +111,7 @@ public class Head extends JPanel {
         frame.setSize(1280, 760);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        Head2 head = new Head2();
+        Head head = new Head();
         frame.add(head);
 
         frame.setVisible(true);

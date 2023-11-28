@@ -71,12 +71,22 @@ public class MainTestLoginfinish extends JFrame {
         JLabel cartLabel = new JLabel("장바구니");
         cartLabel.setFont(new Font("맑은 고딕", Font.BOLD, 17));
         cartLabel.setForeground(Color.BLACK);
-        cartLabel.setBounds(413, 530, 70, 40);
+        cartLabel.setBounds(410, 530, 70, 40);
         mainpanel.add(cartLabel);
 
         cartButton.setBorderPainted(false); // 버튼 테두리 표시 안 함
-        cartButton.addActionListener(e -> { // 장바구니 버튼에 대한 액션 설정
-            // 여기에 장바구니 버튼을 클릭했을 때 수행할 동작을 추가하세요.
+        cartButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // "My Page" 버튼을 클릭하면 MyPageOrder 창을 열도록 함
+                SwingUtilities.invokeLater(() -> {
+                    Cart cart = new Cart();
+                    cart.setVisible(true);
+
+                    // 현재 창을 닫음
+                    ((JFrame) SwingUtilities.getWindowAncestor(cartButton)).dispose();
+                });
+            }
         });
         mainpanel.add(cartButton); // 패널에 장바구니 버튼 추가
 
@@ -90,12 +100,22 @@ public class MainTestLoginfinish extends JFrame {
         JLabel menuSearchLabel = new JLabel("메뉴 검색");
         menuSearchLabel.setFont(new Font("맑은 고딕", Font.BOLD, 17));
         menuSearchLabel.setForeground(Color.BLACK);
-        menuSearchLabel.setBounds(540, 530, 100, 40);
+        menuSearchLabel.setBounds(543, 530, 100, 40);
         mainpanel.add(menuSearchLabel);
 
         menuSearchButton.setBorderPainted(false); // 버튼 테두리 표시 안 함
-        menuSearchButton.addActionListener(e -> { // 메뉴 검색 버튼에 대한 액션 설정
-            // 여기에 메뉴 검색 버튼을 클릭했을 때 수행할 동작을 추가하세요.
+        menuSearchButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // "My Page" 버튼을 클릭하면 MyPageOrder 창을 열도록 함
+                SwingUtilities.invokeLater(() -> {
+                    MenuSearch menuSearch = new MenuSearch();
+                    menuSearch.setVisible(true);
+
+                    // 현재 창을 닫음
+                    ((JFrame) SwingUtilities.getWindowAncestor(menuSearchButton)).dispose();
+                });
+            }
         });
         mainpanel.add(menuSearchButton); // 패널에 메뉴 검색 버튼 추가
 
@@ -108,18 +128,27 @@ public class MainTestLoginfinish extends JFrame {
         JButton myRefButton = new JButton(resizedMyRefIcon); // 이미지 아이콘을 담은 버튼 생성
         myRefButton.setBounds(670, 450, 80, 80); // 버튼의 위치 및 크기 설정
 
-        JLabel myRefLabel = new JLabel("마이 레시피");
+        JLabel myRefLabel = new JLabel("마이 냉장고");
         myRefLabel.setFont(new Font("맑은 고딕", Font.BOLD, 17));
         myRefLabel.setForeground(Color.BLACK);
-        myRefLabel.setBounds(673, 530, 100, 40);
+        myRefLabel.setBounds(667, 530, 100, 40);
         mainpanel.add(myRefLabel);
 
         myRefButton.setBorderPainted(false); // 버튼 테두리 표시 안 함
-        myRefButton.addActionListener(e -> { // 마이 레시피 버튼에 대한 액션 설정
-            // 여기에 마이 레시피 버튼을 클릭했을 때 수행할 동작을 추가하세요.
-        });
-        mainpanel.add(myRefButton); // 패널에 마이 레시피 버튼 추가
+        myRefButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // "My Page" 버튼을 클릭하면 MyPageOrder 창을 열도록 함
+                SwingUtilities.invokeLater(() -> {
+                    MyNaengAdd MyNaengadd = new MyNaengAdd();
+                    MyNaengadd.setVisible(true);
 
+                    // 현재 창을 닫음
+                    ((JFrame) SwingUtilities.getWindowAncestor(myRefButton)).dispose();
+                });
+            }
+        });
+        mainpanel.add(myRefButton);
 
 
 
@@ -132,15 +161,26 @@ public class MainTestLoginfinish extends JFrame {
         JLabel myPageLabel = new JLabel("마이 페이지");
         myPageLabel.setFont(new Font("맑은 고딕", Font.BOLD, 17));
         myPageLabel.setForeground(Color.BLACK);
-        myPageLabel.setBounds(803, 530, 110, 40);
+        myPageLabel.setBounds(798, 530, 110, 40);
         mainpanel.add(myPageLabel);
 
         myPageButton.setBorderPainted(false); // 버튼 테두리 표시 안 함
-        myPageButton.addActionListener(e -> { // 마이 페이지 버튼에 대한 액션 설정
-            // 여기에 마이 페이지 버튼을 클릭했을 때 수행할 동작을 추가하세요.
-        });
-        mainpanel.add(myPageButton); // 패널에 마이 페이지 버튼 추가
+        myPageButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // "My Page" 버튼을 클릭하면 MyPageOrder 창을 열도록 함
+                SwingUtilities.invokeLater(() -> {
+                    MyPageOrder mypageOrder = new MyPageOrder();
+                    mypageOrder.setVisible(true);
 
+                    // 현재 창을 닫음
+                    ((JFrame) SwingUtilities.getWindowAncestor(myPageButton)).dispose();
+                });
+            }
+        }); // 패널에 마이 페이지 버튼 추가
+
+
+        mainpanel.add(myPageButton);
 
         // 로그인, 회원가입, 마이페이지 버튼을 담을 패널
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER)); // 가운데 정렬된 레이아웃 설정

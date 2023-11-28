@@ -6,8 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+
 public class MyNaengAdd extends JFrame {
-    private final int labelLimit = 13; // 라벨 추가 제한 수
+
+
+    int labelLimit = 13; // 라벨 추가 제한 수
     ArrayList<JLabel> labelList = new ArrayList<>(); // 라벨을 저장하는 리스트
 
     public MyNaengAdd() {
@@ -16,7 +19,7 @@ public class MyNaengAdd extends JFrame {
         setSize(1280, 760); // 프레임 크기 설정
         setLocationRelativeTo(null);
 
-        Head2 head = new Head2();
+        Head head = new Head();
         JPanel headerPanel = head.getHeaderPanel();
 
         JPanel mainpanel = new JPanel();
@@ -52,42 +55,10 @@ public class MyNaengAdd extends JFrame {
         add(mainpanel);
 
         JLabel mainText = new JLabel("My 냉장고");
-        mainText.setFont(new Font("맑은 고딕", Font.BOLD, 38));
+        mainText.setFont(new Font("맑은 고딕", Font.BOLD, 36));
         mainText.setHorizontalAlignment(SwingConstants.CENTER);
         mainText.setBounds(35, 35, 200, 60); // 위치 및 크기 조정
         panel.add(mainText);
-
-        JButton orderHistoryButton = new JButton("재료 추가                >");
-        orderHistoryButton.setForeground(new Color(29, 185, 89)); // Set text color to green
-        orderHistoryButton.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-        orderHistoryButton.setHorizontalAlignment(SwingConstants.CENTER);
-        orderHistoryButton.setBounds(0, 130, 270, 80);
-        orderHistoryButton.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY)); // Set border color
-        orderHistoryButton.setBackground(Color.WHITE); // Set background color
-        panel.add(orderHistoryButton);
-
-        JButton modifyUserInfoButton = new JButton("재료 삭제                >");
-        modifyUserInfoButton.setForeground(Color.LIGHT_GRAY); // Set text color to light gray
-        modifyUserInfoButton.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-        modifyUserInfoButton.setHorizontalAlignment(SwingConstants.CENTER);
-        modifyUserInfoButton.setBounds(0, 210, 270, 80);
-        modifyUserInfoButton.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY)); // Set border color
-        modifyUserInfoButton.setBackground(Color.WHITE); // Set background color
-        panel.add(modifyUserInfoButton);
-
-        modifyUserInfoButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                MyNaengMinus myNaengMinus = new MyNaengMinus();
-                myNaengMinus.setVisible(true);
-
-                ((JFrame) SwingUtilities.getWindowAncestor(orderHistoryButton)).dispose();
-
-
-            }
-        });
-
 
         JLabel orderLabel = new JLabel("재료를 추가하세요!");
         orderLabel.setFont(new Font("맑은 고딕", Font.BOLD, 35));
@@ -95,7 +66,7 @@ public class MyNaengAdd extends JFrame {
         orderLabel.setBounds(25, 2, 400, 60); // 위치 및 크기 조정
         subpanel.add(orderLabel);
 
-        ImageIcon logoIcon1 = new ImageIcon(MyNaengMinus.class.getResource("/image/line.png")); // 이미지 아이콘 로드
+        ImageIcon logoIcon1 = new ImageIcon(MyNaengAdd.class.getResource("/image/line.png")); // 이미지 아이콘 로드
         Image logoImage1 = logoIcon1.getImage().getScaledInstance(1, 1110, Image.SCALE_SMOOTH); // 이미지 크기 조절
         ImageIcon resizedLogoIcon1 = new ImageIcon(logoImage1); // 조절된 이미지 아이콘 생성
         JLabel imgLabel1 = new JLabel(resizedLogoIcon1); // 이미지 아이콘을 담을 라벨 생성
@@ -103,7 +74,7 @@ public class MyNaengAdd extends JFrame {
         rightPanel.add(imgLabel1); // 우측 패널에 이미지 라벨 추가
 
         // SaveButton 이미지 로드 및 조절
-        ImageIcon saveButtonIcon = new ImageIcon(MyNaengMinus.class.getResource("/image/SaveButton.png")); // SaveButton 아이콘 로드
+        ImageIcon saveButtonIcon = new ImageIcon(MyNaengAdd.class.getResource("/image/SaveButton.png")); // SaveButton 아이콘 로드
         Image saveButtonImage = saveButtonIcon.getImage().getScaledInstance(83, 38, Image.SCALE_SMOOTH); // 이미지 크기 조절
         ImageIcon resizedSaveButtonIcon = new ImageIcon(saveButtonImage); // 조절된 이미지 아이콘 생성
         JButton saveButton = new JButton(resizedSaveButtonIcon); // 버튼 생성 및 아이콘 설정
@@ -118,6 +89,9 @@ public class MyNaengAdd extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 MainTestLoginfinish mainTest2 = new MainTestLoginfinish(); // MainTest2 클래스의 객체 생성
                 mainTest2.setVisible(true); // 새 창 보이기
+                for (JLabel label : labelList) {
+                    System.out.println(label.getText());
+                }
                 dispose(); // 현재 창 닫기 (MyNaengAdd 클래스의 객체가 있어야 함)
             }
         });
@@ -136,7 +110,7 @@ public class MyNaengAdd extends JFrame {
                     if (labelList.size() < labelLimit) { // 라벨 추가 제한 수를 넘지 않는 경우
                         JLabel textLabel = new JLabel(enteredText);
                         textLabel.setFont(new Font("Malgun Gothic", Font.PLAIN, 20)); // 폰트 설정
-                        textLabel.setBounds(30, 60 + labelList.size() * 30, 300, 30); // 라벨 위치 설정
+                        textLabel.setBounds(30, 50 + labelList.size() * 33, 300, 30); // 라벨 위치 설정
 
                         leftPanel.add(textLabel); // 우측 패널에 라벨 추가
                         labelList.add(textLabel); // 라벨 리스트에 추가
