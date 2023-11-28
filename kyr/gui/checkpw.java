@@ -174,6 +174,20 @@ public class checkpw extends JFrame {
         checkbutton.setForeground(new Color(29, 185, 89)); // 흰색 글씨
         checkpanel.add(checkbutton);
 
+        checkbutton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // "My Page" 버튼을 클릭하면 MyPageOrder 창을 열도록 함
+                SwingUtilities.invokeLater(() -> {
+                    MyPageEditMember myPageEditMember = new MyPageEditMember();
+                    myPageEditMember.setVisible(true);
+
+                    // 현재 창을 닫음
+                    ((JFrame) SwingUtilities.getWindowAncestor(checkbutton)).dispose();
+                });
+            }
+        });
+
 
         JSeparator horizontalLine3 = new JSeparator(JSeparator.HORIZONTAL);
         horizontalLine3.setForeground(Color.BLACK);

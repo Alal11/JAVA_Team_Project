@@ -26,9 +26,12 @@ public class Login extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
+        // 헤더 불러오기
+        Head2 head2 = new Head2();
+        JPanel headerPanel = head2.getHeaderPanel();
 
 
-        //backButton 생성
+       /* //backButton 생성
         backButton = new JButton("<-");
         backButton.setBounds(0, 0, 80, 40);
         // back 버튼 이벤트 처리
@@ -40,21 +43,27 @@ public class Login extends JFrame {
                 setVisible(false); // 현재 창은 숨김
             }
         });
-
+*/
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(null);
         mainPanel.setBackground(Color.WHITE);
         //mainPanel.setLayout(new FlowLayout());
+
+        JPanel Loginpanel = new JPanel();
+        Loginpanel.setLayout(null);
+        Loginpanel.setBackground(Color.WHITE);
+        Loginpanel.setBounds(0, 170, 1080, 600);
+
         // 타이틀 레이블 추가
         JLabel label = new JLabel("로그인");
         label.setFont(new Font("맑은 고딕", Font.BOLD, 36));  // 폰트 설정
         label.setHorizontalAlignment(SwingConstants.CENTER);  // 텍스트 가운데 정렬
-        label.setBounds(540, 100, 200, 50);
+        label.setBounds(540, 10, 200, 50);
 
 
         // 아이디 필드
         usernameField = new JTextField("아이디를 입력해주세요", 32);
-        usernameField.setBounds(390, 200, 500, 60);
+        usernameField.setBounds(390, 110, 500, 60);
         usernameField.setFont(new Font("Serif", Font.PLAIN, 15));
         PlainDocument usernameDocument = new PlainDocument() {
             @Override
@@ -87,7 +96,7 @@ public class Login extends JFrame {
 
         // "X" 버튼을 아이디 입력 필드와 연결
         clearButton = new JButton("X");
-        clearButton.setBounds(880, 200, 60, 60);
+        clearButton.setBounds(880, 110, 60, 60);
         clearButton.setFont(new Font("Serif", Font.PLAIN, 12));
         clearButton.setFocusPainted(false);
         clearButton.setVisible(false);
@@ -154,7 +163,7 @@ public class Login extends JFrame {
 
         // 비밀번호 필드
         passwordField = new JPasswordField(32);
-        passwordField.setBounds(390, 270, 500, 60);
+        passwordField.setBounds(390, 180, 500, 60);
         passwordField.setFont(new Font("Serif", Font.PLAIN, 15));
         PlainDocument passwordDocument = new PlainDocument() {
             @Override
@@ -189,7 +198,7 @@ public class Login extends JFrame {
 
         // "X" 버튼을 비밀번호 입력 필드와 연결
         passwordClearButton = new JButton("X");
-        passwordClearButton.setBounds(880, 270, 60, 60);
+        passwordClearButton.setBounds(880, 180, 60, 60);
         passwordClearButton.setFont(new Font("Serif", Font.PLAIN, 12));
         passwordClearButton.setFocusPainted(false);
         passwordClearButton.setVisible(false);
@@ -245,7 +254,7 @@ public class Login extends JFrame {
 
         // 로그인 버튼
         JButton loginButton = new JButton("로그인");
-        loginButton.setBounds(390, 350, 500, 60);
+        loginButton.setBounds(390, 260, 500, 60);
         loginButton.setFont(new Font("Serif", Font.BOLD, 24));
         loginButton.setBorder(new RoundedBorder(10, new Color(39, 185, 89)));
         loginButton.setBackground(new Color(39, 185, 89)); // 연두색 배경
@@ -278,7 +287,7 @@ public class Login extends JFrame {
 
         // 회원가입 버튼
         JButton signupButton = new JButton("회원가입");
-        signupButton.setBounds(390, 420, 500, 60);
+        signupButton.setBounds(390, 340, 500, 60);
         signupButton.setFont(new Font("Serif", Font.BOLD, 24));
         signupButton.setBorder(new RoundedBorder(10, new Color(39, 185, 89)));
         signupButton.setBackground(Color.WHITE); // 하얀색 배경
@@ -297,14 +306,17 @@ public class Login extends JFrame {
 
 
 
-        add(backButton);
-        add(label);
-        add(usernameField);
-        add(clearButton);
-        add(passwordField);
-        add(passwordClearButton);
-        add(loginButton);
-        add(signupButton);
+        //add(backButton);
+        Loginpanel.add(label);
+        Loginpanel.add(usernameField);
+        Loginpanel.add(clearButton);
+        Loginpanel.add(passwordField);
+        Loginpanel.add(passwordClearButton);
+        Loginpanel.add(loginButton);
+        Loginpanel.add(signupButton);
+
+        add(Loginpanel);
+        add(headerPanel);
         add(mainPanel);
 
 

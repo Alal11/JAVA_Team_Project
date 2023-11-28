@@ -93,7 +93,7 @@ public class MypageOrderDetail extends JFrame {
         horizontalLine.setBounds(15, 64, 775, 50); // 위치 및 크기 조정
         subpanel.add(horizontalLine);
 
-        JLabel orderLabel = new JLabel("주문내역");
+        JLabel orderLabel = new JLabel("주문내역 상세");
         orderLabel.setFont(new Font("맑은 고딕", Font.BOLD, 35));
         orderLabel.setHorizontalAlignment(SwingConstants.LEFT);
         orderLabel.setBounds(25, 2, 300, 60); // 위치 및 크기 조정
@@ -170,16 +170,16 @@ public class MypageOrderDetail extends JFrame {
         productNameLabel.setBounds(40, 50, 70, 20);
         prouductpanel.add(productNameLabel);
 
-        JLabel orderNumberLabel = new JLabel("주문번호");
+        /*JLabel orderNumberLabel = new JLabel("주문번호");
         orderNumberLabel.setFont(new Font("맑은 고딕", Font.BOLD, 15));
         orderNumberLabel.setHorizontalAlignment(SwingConstants.LEFT);
         orderNumberLabel.setBounds(40, 80, 70, 20);
-        prouductpanel.add(orderNumberLabel);
+        prouductpanel.add(orderNumberLabel);*/
 
         JLabel paymentAmountLabel = new JLabel("결제금액");
         paymentAmountLabel.setFont(new Font("맑은 고딕", Font.BOLD, 15));
         paymentAmountLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        paymentAmountLabel.setBounds(40, 110, 70, 20);
+        paymentAmountLabel.setBounds(40, 80, 70, 20);
         prouductpanel.add(paymentAmountLabel);
 
         // 텍스트 필드에 데이터베이스에서 가져온 값 설정 (임시 데이터 사용)
@@ -189,16 +189,16 @@ public class MypageOrderDetail extends JFrame {
         productNameField.setBounds(120, 50, 70, 20);
         prouductpanel.add(productNameField);
 
-        JTextField orderNumberField = new JTextField();
+        /*JTextField orderNumberField = new JTextField();
         orderNumberField.setFont(new Font("맑은 고딕", Font.BOLD, 10));
         orderNumberField.setHorizontalAlignment(SwingConstants.LEFT);
         orderNumberField.setBounds(120, 80, 70, 20);
-        prouductpanel.add(orderNumberField);
+        prouductpanel.add(orderNumberField);*/
 
         JTextField paymentAmountField = new JTextField();
         paymentAmountField.setFont(new Font("맑은 고딕", Font.BOLD, 10));
         paymentAmountField.setHorizontalAlignment(SwingConstants.LEFT);
-        paymentAmountField.setBounds(120, 110, 70, 20);
+        paymentAmountField.setBounds(120, 80, 70, 20);
         prouductpanel.add(paymentAmountField);
 
         //배송정보 내용적기

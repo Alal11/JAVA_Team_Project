@@ -1,15 +1,16 @@
 package kyr.gui;
 
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class orderMessage extends JFrame {
+public class cartMessage2 extends JFrame {
 
-    public orderMessage() {
+    public cartMessage2() {
         // 프레임 설정
-        setTitle("주문하기");
+        setTitle("장바구니");
         setSize(275, 130);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -18,7 +19,7 @@ public class orderMessage extends JFrame {
         setLayout(new BorderLayout());
 
         // 텍스트 라벨 추가
-        JLabel label = new JLabel("주문이 완료되었습니다.");
+        JLabel label = new JLabel("수량을 확인하셨습니까");
         label.setHorizontalAlignment(JLabel.CENTER);
         add(label, BorderLayout.CENTER);
 
@@ -26,36 +27,38 @@ public class orderMessage extends JFrame {
         JPanel buttonPanel = new JPanel(new FlowLayout());
 
         // "장바구니로 가기" 버튼 추가
-        JButton gotomainButton = new JButton("메인화면으로 가기");
-        gotomainButton.addActionListener(new ActionListener() {
+        JButton goToCartButton = new JButton("아니요");
+        goToCartButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 SwingUtilities.invokeLater(() -> {
-                    MainTestLoginfinish mainTestLoginfinish = new MainTestLoginfinish();
-                    mainTestLoginfinish.setVisible(true);
+
 
                     // 현재 창을 닫음
-                    ((JFrame) SwingUtilities.getWindowAncestor(gotomainButton)).dispose();
+                    ((JFrame) SwingUtilities.getWindowAncestor(goToCartButton)).dispose();
                 });
             }
         });
-        buttonPanel.add(gotomainButton);
+        buttonPanel.add(goToCartButton);
 
         // "계속 쇼핑하기" 버튼 추가
-        JButton goshoppingButton = new JButton("쇼핑하러 가기");
-        goshoppingButton.addActionListener(new ActionListener() {
+        JButton goButton = new JButton("주문하기");
+        goButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 SwingUtilities.invokeLater(() -> {
-                    PriceSearch priceSearch = new PriceSearch();
-                    priceSearch.setVisible(true);
+                    orderMessage orderMessage = new orderMessage();
+                    orderMessage.setVisible(true);
+
+
                     // 현재 창을 닫음
-                    ((JFrame) SwingUtilities.getWindowAncestor(goshoppingButton)).dispose();
+                    ((JFrame) SwingUtilities.getWindowAncestor(goButton)).dispose();
                 });
             }
         });
-        buttonPanel.add(goshoppingButton);
+        buttonPanel.add(goButton);
 
         add(buttonPanel, BorderLayout.SOUTH);
 
@@ -67,10 +70,11 @@ public class orderMessage extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new orderMessage();
+                new cartMessage2();
             }
         });
     }
 }
+
 
 

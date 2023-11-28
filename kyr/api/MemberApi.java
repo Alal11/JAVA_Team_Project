@@ -1,4 +1,5 @@
-/*package kyr.api;
+
+package kyr.api;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,10 +24,10 @@ public class MemberApi {
     private static ObjectMapper mapper = new ObjectMapper();
     private static final HttpRequestManager HTTP_REQUEST_MANAGER = new HttpRequestManager();
 
-    /** ---------------------------------------------------------------------------------------------------
+    */
+/** ---------------------------------------------------------------------------------------------------
      * 회원가입
-     */
-  /*  public static void signUp(Member member) {
+    public static void signUp(Member member) {
 
         String endPoint = "/user/signup";
         String requestBody;
@@ -46,8 +47,7 @@ public class MemberApi {
 
     /** ---------------------------------------------------------------------------------------------------
      * 로그인
-     */
- /*   public static void login(LoginDto loginDto) {
+    public static void login(LoginDto loginDto) {
 
         String endPoint = "/user/login/" + loginDto.getMemberId() + "?" + "password=" + loginDto.getPassword();
         String response;
