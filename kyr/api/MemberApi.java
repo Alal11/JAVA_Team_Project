@@ -1,4 +1,4 @@
-
+/*
 package kyr.api;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -22,9 +22,9 @@ import java.nio.charset.StandardCharsets;
 public class MemberApi {
 
     private static ObjectMapper mapper = new ObjectMapper();
-    private static final HttpRequestManager HTTP_REQUEST_MANAGER = new HttpRequestManager();
+    private static final api.HttpRequestManager HTTP_REQUEST_MANAGER = new HttpRequestManager();
 
-    */
+*/
 /** ---------------------------------------------------------------------------------------------------
      * 회원가입
     public static void signUp(Member member) {
