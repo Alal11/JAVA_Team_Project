@@ -42,8 +42,8 @@ public class Head2 extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 // "My Page" 버튼을 클릭하면 MyPageOrder 창을 열도록 함
                 SwingUtilities.invokeLater(() -> {
-                    MainTestLoginfinish mainTestLoginfinish = new MainTestLoginfinish();
-                    mainTestLoginfinish.setVisible(true);
+                    MainTest mainTest = new MainTest();
+                    mainTest.setVisible(true);
 
                     // 현재 창을 닫음
                     ((JFrame) SwingUtilities.getWindowAncestor(titleButton)).dispose();

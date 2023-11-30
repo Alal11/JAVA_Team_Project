@@ -131,7 +131,7 @@ public class Cart extends JFrame {
         checkbutton.setForeground(new Color(29, 185, 89)); // 흰색 글씨
         add(checkbutton);
 
-        checkbutton.addActionListener(new ActionListener() {
+        /*checkbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // "My Page" 버튼을 클릭하면 MyPageOrder 창을 열도록 함
@@ -141,7 +141,7 @@ public class Cart extends JFrame {
 
                 });
             }
-        });
+        });*/
 
         JSeparator horizontalLine2 = new JSeparator(JSeparator.HORIZONTAL);
         horizontalLine2.setBounds(0, 79, 650, 70); // 위치 및 크기 조정

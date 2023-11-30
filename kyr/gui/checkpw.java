@@ -81,8 +81,8 @@ public class checkpw extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // "My Page" 버튼을 클릭하면 MyPageOrder 창을 열도록 함
                 SwingUtilities.invokeLater(() -> {
-                    MyPageEditMember myPageEditMember = new MyPageEditMember();
-                    myPageEditMember.setVisible(true);
+                    checkpw checkpw = new checkpw();
+                    checkpw.setVisible(true);
 
                     // 현재 창을 닫음
                     ((JFrame) SwingUtilities.getWindowAncestor(modifyUserInfoButton)).dispose();
@@ -177,14 +177,19 @@ public class checkpw extends JFrame {
         checkbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // "My Page" 버튼을 클릭하면 MyPageOrder 창을 열도록 함
-                SwingUtilities.invokeLater(() -> {
-                    MyPageEditMember myPageEditMember = new MyPageEditMember();
-                    myPageEditMember.setVisible(true);
+                // Check if the password field is empty
+                if (String.valueOf(passwordField.getPassword()).trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(checkpw.this, "비밀번호를 입력하세요.", "경고", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    // If not empty, proceed with your existing logic
+                    SwingUtilities.invokeLater(() -> {
+                        MyPageEditMember myPageEditMember = new MyPageEditMember();
+                        myPageEditMember.setVisible(true);
 
-                    // 현재 창을 닫음
-                    ((JFrame) SwingUtilities.getWindowAncestor(checkbutton)).dispose();
-                });
+                        // 현재 창을 닫음
+                        ((JFrame) SwingUtilities.getWindowAncestor(checkbutton)).dispose();
+                    });
+                }
             }
         });
 

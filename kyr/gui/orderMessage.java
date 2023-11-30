@@ -26,7 +26,7 @@ public class orderMessage extends JFrame {
         JPanel buttonPanel = new JPanel(new FlowLayout());
 
         // "장바구니로 가기" 버튼 추가
-        JButton gotomainButton = new JButton("메인화면으로 가기");
+      /*  JButton gotomainButton = new JButton("메인화면으로 가기");
         gotomainButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -55,7 +55,21 @@ public class orderMessage extends JFrame {
                 });
             }
         });
+        buttonPanel.add(goshoppingButton);*/
+
+        JButton goshoppingButton = new JButton("확인");
+        goshoppingButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(() -> {
+
+                    // 현재 창을 닫음
+                    ((JFrame) SwingUtilities.getWindowAncestor(goshoppingButton)).dispose();
+                });
+            }
+        });
         buttonPanel.add(goshoppingButton);
+
 
         add(buttonPanel, BorderLayout.SOUTH);
 

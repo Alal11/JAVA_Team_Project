@@ -173,68 +173,36 @@ public class SignUppart extends JPanel {
             }
         });
 
-        passwordField.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped (KeyEvent e){
-                char c = e.getKeyChar();
-                // 유니코드 범위 내의 한글 입력을 막음
-                if (Character.UnicodeBlock.of(c) == Character.UnicodeBlock.HANGUL_SYLLABLES ||
-                        Character.UnicodeBlock.of(c) == Character.UnicodeBlock.HANGUL_JAMO ||
-                        Character.UnicodeBlock.of(c) == Character.UnicodeBlock.HANGUL_COMPATIBILITY_JAMO) {
-                    e.consume();
-                }
-            }
-
-            @Override
-            public void keyPressed (KeyEvent e){
-                // 키 누름 이벤트 처리
-            }
-
-            @Override
-            public void keyReleased (KeyEvent e){
-                // 키 뗌 이벤트 처리
-            }
-        });
 
         duplicateCheckPWButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed (ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 // Check if password or confirmPassword fields are empty
-                if (new String(passwordField.getPassword()).isEmpty()) {
+                String password = new String(passwordField.getPassword());
+                String confirmPassword = new String(confirmPasswordField.getPassword());
+
+                if (password.isEmpty()) {
                     JOptionPane.showMessageDialog(SignUppart.this, "비밀번호를 입력하세요.");
                     return;
                 }
 
-                if (new String(confirmPasswordField.getPassword()).isEmpty()) {
-                    JOptionPane.showMessageDialog(SignUppart.this, "비밀번호확인도 입력하세요.");
+                if (confirmPassword.isEmpty()) {
+                    JOptionPane.showMessageDialog(SignUppart.this, "비밀번호 확인도 입력하세요.");
                     return;
                 }
 
-                char[] passwordChars = passwordField.getPassword();
-                char[] confirmPasswordChars = confirmPasswordField.getPassword();
+                passwordsMatch = password.equals(confirmPassword);
 
-                if (passwordChars.length == confirmPasswordChars.length) {
-                    passwordsMatch = true;
-                    for (int i = 0; i < passwordChars.length; i++) {
-                        if (passwordChars[i] != confirmPasswordChars[i]) {
-                            passwordsMatch = false;
-                            break;
-                        }
-                    }
-                    
 
-                    if (passwordsMatch) {
-                        JOptionPane.showMessageDialog(SignUppart.this, "비밀번호 설정이 완료되었습니다!");
-                        //passwordsMatch = true;
 
-                    } else {
-                        JOptionPane.showMessageDialog(SignUppart.this, "비밀번호가 일치하지 않습니다. 다시 입력하세요.");
-                    }
+                if (passwordsMatch) {
+                    JOptionPane.showMessageDialog(SignUppart.this, "비밀번호 설정이 완료되었습니다!");
                 } else {
                     JOptionPane.showMessageDialog(SignUppart.this, "비밀번호가 일치하지 않습니다. 다시 입력하세요.");
                 }
             }
         });
+
 
         emailField.addKeyListener(new KeyAdapter() {
             @Override
@@ -316,7 +284,7 @@ public class SignUppart extends JPanel {
         registerButton.setFont(new Font("맑은 고딕", Font.BOLD, 16));
         registerButton.setBounds(380, 500, 100, 50);
         registerButton.setBorder(new Login.RoundedBorder(10,Color.WHITE));
-        registerButton.setBackground(new Color(29, 185, 89)); // 연두색 배경
+        registerButton.setBackground(new Color(123, 199, 139)); // 연두색 배경
         registerButton.setForeground(Color.WHITE); // 흰색 글씨
 
         // 회원가입 버튼 이벤트 처리
@@ -424,9 +392,6 @@ public class SignUppart extends JPanel {
 
 
 
-
-
-
         memberPanel.add(IDLabel);
         memberPanel.add(idField);
         memberPanel.add(duplicateCheckIDButton);
@@ -453,6 +418,13 @@ public class SignUppart extends JPanel {
         aPanel.setLayout(null);
         aPanel.setBackground(Color.WHITE);
         aPanel.setBounds(0, 0, 810, 550);
+
+
+
+
+
+
+
         aPanel.add(memberPanel);
 
         add(aPanel);

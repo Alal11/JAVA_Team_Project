@@ -25,35 +25,35 @@ public class MenuSearch extends JFrame {
         JPanel searchPanel = new JPanel();
         searchPanel.setLayout(null);
         searchPanel.setBackground(Color.WHITE);
-        searchPanel.setBounds(100, 125, 1080, 50);
+        searchPanel.setBounds(100, 150, 1080, 60);
 
         // 상단에 음식 검색 JTextField와 검색 버튼(JButton) 추가
-        JTextField foodSearchField = new JTextField("원하는 메뉴의 이름을 적어주세요");
+        JTextField foodSearchField = new JTextField("   원하는 메뉴의 이름을 적어주세요");
         // 텍스트 필드의 글씨 크기 조절
         Font fieldFont = new Font("맑은 고딕", Font.PLAIN, 16);
         foodSearchField.setFont(fieldFont);
 
-// 텍스트 필드의 배경색과 텍스트 색상 조절
+        // 텍스트 필드의 배경색과 텍스트 색상 조절
         foodSearchField.setBackground(Color.WHITE);
         foodSearchField.setForeground(Color.LIGHT_GRAY);
         ImageIcon searchIcon = new ImageIcon(MainTest.class.getResource("/kyr/image/searchicon.png"));
-        Image searchImage = searchIcon.getImage().getScaledInstance(49, 49, Image.SCALE_SMOOTH);
+        Image searchImage = searchIcon.getImage().getScaledInstance(59, 59, Image.SCALE_SMOOTH);
         ImageIcon sIcon = new ImageIcon(searchImage);
         JButton searchButton = new JButton(sIcon);
 
-        foodSearchField.setBounds(0, 0, 800, 50);
-        searchButton.setBounds(800, 0, 50, 50);
+        foodSearchField.setBounds(250, 0, 550, 60);
+        searchButton.setBounds(800, 0, 59, 59);
 
         foodSearchField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                if (foodSearchField.getText().equals("원하는 메뉴의 이름을 적어주세요")) {
+                if (foodSearchField.getText().equals("   원하는 메뉴의 이름을 적어주세요")) {
                     foodSearchField.setText("");
                     foodSearchField.setForeground(Color.BLACK); // 글씨 색상을 검정색으로 변경
                 }
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 if (foodSearchField.getText().isEmpty()) {
-                    foodSearchField.setText("원하는 메뉴의 이름을 적어주세요");
+                    foodSearchField.setText("    원하는 메뉴의 이름을 적어주세요");
                     foodSearchField.setForeground(Color.LIGHT_GRAY); // 원래 색상으로 변경
                 }
             }
@@ -70,7 +70,7 @@ public class MenuSearch extends JFrame {
         searchPanel.add(searchButton);
 
         foodInfoPanel = new JPanel(null);
-        foodInfoPanel.setBounds(100, 200, 1080, 550);
+        foodInfoPanel.setBounds(100, 230, 1080, 550);
         foodInfoPanel.setBackground(Color.WHITE);
 
         add(searchPanel);

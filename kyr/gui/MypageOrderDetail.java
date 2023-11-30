@@ -99,12 +99,12 @@ public class MypageOrderDetail extends JFrame {
         orderLabel.setBounds(25, 2, 300, 60); // 위치 및 크기 조정
         subpanel.add(orderLabel);
 
-        // 상품패널 추가 (이 부분에 내용을 추가할 수 있습니다.)
+
+        // 배송패널 추가 (이 부분에 내용을 추가할 수 있습니다.)
         JPanel prouductpanel = new JPanel();
         prouductpanel.setLayout(null); // 절대 위치 레이아웃으로 설정
         prouductpanel.setBackground(Color.WHITE); // 패널 배경색을 흰색으로 설정
         prouductpanel.setBounds(390, 200, 810, 270); // 위치 및 크기 조정
-
 
         // 4. 메인 버튼들 좌측에 가로선, "주문번호" label, "전체 다시 담기" 버튼 추가
         JSeparator horizontalLine2 = new JSeparator(JSeparator.HORIZONTAL);
@@ -112,28 +112,50 @@ public class MypageOrderDetail extends JFrame {
         horizontalLine2.setForeground(Color.LIGHT_GRAY); // Set line color
         prouductpanel.add(horizontalLine2);
 
-       /* JPanel 주문번호패널 = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                // 수평으로 그라데이션 그리기
-                Graphics2D g2d = (Graphics2D) g;
-                GradientPaint 그라데이션 = new GradientPaint(0, 0, new Color(123, 199, 139),
-                        getWidth(), 0, Color.WHITE);
-                g2d.setPaint(그라데이션);
-                g2d.fillRect(0, 0, getWidth(), getHeight());
-            }
-        };
-        주문번호패널.setLayout(null); // 수동 위치 지정을 위해 레이아웃을 null로 설정
-        주문번호패널.setBackground(new Color(123, 199, 139)); // 배경색을 초록색으로 설정
-        주문번호패널.setBounds(30, 5, 810, 30); // 위치 및 크기 조정*/
 
         JLabel dateLabel = new JLabel("주문번호");
         dateLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
         dateLabel.setHorizontalAlignment(SwingConstants.LEFT);
         dateLabel.setBounds(40, 0, 760, 30); // 위치 및 크기 조정
-        /*주문번호패널.add(dateLabel);
-        prouductpanel.add(주문번호패널);*/
+
         prouductpanel.add(dateLabel);
+
+        ImageIcon foodIcon = new ImageIcon(MainTest.class.getResource("/kyr/image/ex)food.png"));
+        Image foodImage = foodIcon.getImage().getScaledInstance(60, 70, Image.SCALE_SMOOTH);
+        ImageIcon fIcon = new ImageIcon(foodImage);
+        JLabel FoodLabel = new JLabel(fIcon);
+        FoodLabel.setBounds(40, 50, 60, 70);
+        prouductpanel.add(FoodLabel);
+
+
+
+        JLabel productNameLabel = new JLabel("상품명");
+        productNameLabel.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+        productNameLabel.setHorizontalAlignment(SwingConstants.LEFT);
+        productNameLabel.setBounds(110, 50, 70, 20);
+        prouductpanel.add(productNameLabel);
+
+
+        JLabel paymentAmountLabel = new JLabel("결제금액");
+        paymentAmountLabel.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+        paymentAmountLabel.setHorizontalAlignment(SwingConstants.LEFT);
+        paymentAmountLabel.setBounds(110, 80, 70, 20);
+        prouductpanel.add(paymentAmountLabel);
+
+        // 텍스트 필드에 데이터베이스에서 가져온 값 설정 (임시 데이터 사용)
+        JTextField productNameField = new JTextField();
+        productNameField.setFont(new Font("맑은 고딕", Font.BOLD, 10));
+        productNameField.setHorizontalAlignment(SwingConstants.LEFT);
+        productNameField.setBounds(190, 50, 70, 20);
+        prouductpanel.add(productNameField);
+
+
+        JTextField paymentAmountField = new JTextField();
+        paymentAmountField.setFont(new Font("맑은 고딕", Font.BOLD, 10));
+        paymentAmountField.setHorizontalAlignment(SwingConstants.LEFT);
+        paymentAmountField.setBounds(190, 80, 70, 20);
+        prouductpanel.add(paymentAmountField);
+
 
 
         // 배송패널 추가 (이 부분에 내용을 추가할 수 있습니다.)
@@ -149,57 +171,15 @@ public class MypageOrderDetail extends JFrame {
         horizontalLine3.setForeground(Color.LIGHT_GRAY); // Set line color
         deliverypanel.add(horizontalLine3);
 
-      /*  JPanel 배송정보패널 = new JPanel();
-        배송정보패널.setLayout(null); // 수동 위치 지정을 위해 레이아웃을 null로 설정
-        배송정보패널.setBackground(new Color(123, 199, 139)); // 배경색을 초록색으로 설정
-        배송정보패널.setBounds(30, 5, 810, 30); // 위치 및 크기 조정*/
 
         JLabel OrederdataLabel = new JLabel("배송정보");
         OrederdataLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
         OrederdataLabel.setHorizontalAlignment(SwingConstants.LEFT);
         OrederdataLabel.setBounds(40, 0, 100, 30); // 위치 및 크기 조정
-        /*배송정보패널.add(OrederdataLabel);
-        deliverypanel.add(배송정보패널);*/
         deliverypanel.add(OrederdataLabel);
 
 
 
-        JLabel productNameLabel = new JLabel("상품명");
-        productNameLabel.setFont(new Font("맑은 고딕", Font.BOLD, 15));
-        productNameLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        productNameLabel.setBounds(40, 50, 70, 20);
-        prouductpanel.add(productNameLabel);
-
-        /*JLabel orderNumberLabel = new JLabel("주문번호");
-        orderNumberLabel.setFont(new Font("맑은 고딕", Font.BOLD, 15));
-        orderNumberLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        orderNumberLabel.setBounds(40, 80, 70, 20);
-        prouductpanel.add(orderNumberLabel);*/
-
-        JLabel paymentAmountLabel = new JLabel("결제금액");
-        paymentAmountLabel.setFont(new Font("맑은 고딕", Font.BOLD, 15));
-        paymentAmountLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        paymentAmountLabel.setBounds(40, 80, 70, 20);
-        prouductpanel.add(paymentAmountLabel);
-
-        // 텍스트 필드에 데이터베이스에서 가져온 값 설정 (임시 데이터 사용)
-        JTextField productNameField = new JTextField();
-        productNameField.setFont(new Font("맑은 고딕", Font.BOLD, 10));
-        productNameField.setHorizontalAlignment(SwingConstants.LEFT);
-        productNameField.setBounds(120, 50, 70, 20);
-        prouductpanel.add(productNameField);
-
-        /*JTextField orderNumberField = new JTextField();
-        orderNumberField.setFont(new Font("맑은 고딕", Font.BOLD, 10));
-        orderNumberField.setHorizontalAlignment(SwingConstants.LEFT);
-        orderNumberField.setBounds(120, 80, 70, 20);
-        prouductpanel.add(orderNumberField);*/
-
-        JTextField paymentAmountField = new JTextField();
-        paymentAmountField.setFont(new Font("맑은 고딕", Font.BOLD, 10));
-        paymentAmountField.setHorizontalAlignment(SwingConstants.LEFT);
-        paymentAmountField.setBounds(120, 80, 70, 20);
-        prouductpanel.add(paymentAmountField);
 
         //배송정보 내용적기
         JLabel recipientLabel = new JLabel("수령자");
@@ -219,6 +199,8 @@ public class MypageOrderDetail extends JFrame {
         addressLabel.setHorizontalAlignment(SwingConstants.LEFT);
         addressLabel.setBounds(40, 110, 70, 20);
         deliverypanel.add(addressLabel);
+
+
 
 
         JTextField recipientField = new JTextField();

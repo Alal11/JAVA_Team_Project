@@ -64,7 +64,7 @@ public class Login extends JFrame {
         // 아이디 필드
         usernameField = new JTextField("아이디를 입력해주세요", 32);
         usernameField.setBounds(390, 110, 500, 60);
-        usernameField.setFont(new Font("Serif", Font.PLAIN, 15));
+        usernameField.setFont(new Font("Serif", Font.PLAIN, 18));
         PlainDocument usernameDocument = new PlainDocument() {
             @Override
             public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
@@ -97,7 +97,7 @@ public class Login extends JFrame {
         // "X" 버튼을 아이디 입력 필드와 연결
         clearButton = new JButton("X");
         clearButton.setBounds(880, 110, 60, 60);
-        clearButton.setFont(new Font("Serif", Font.PLAIN, 12));
+        clearButton.setFont(new Font("Serif", Font.PLAIN, 16));
         clearButton.setFocusPainted(false);
         clearButton.setVisible(false);
         clearButton.setBackground(Color.WHITE); // Set the background color to white
@@ -121,7 +121,7 @@ public class Login extends JFrame {
                 // Plain text components may not fire these events
             }
         });
-
+/*
         // 포커스 이벤트를 처리하는 FocusListener 추가
         usernameField.addFocusListener(new FocusListener() {
             @Override
@@ -141,7 +141,7 @@ public class Login extends JFrame {
                     clearButton.setVisible(true);
                 }
             }
-        });
+        });*/
 
         // "X" 버튼을 클릭하면 아이디 입력 필드의 내용을 지우기
         clearButton.addActionListener(e -> {
@@ -164,7 +164,7 @@ public class Login extends JFrame {
         // 비밀번호 필드
         passwordField = new JPasswordField(32);
         passwordField.setBounds(390, 180, 500, 60);
-        passwordField.setFont(new Font("Serif", Font.PLAIN, 15));
+        passwordField.setFont(new Font("Serif", Font.PLAIN, 18));
         PlainDocument passwordDocument = new PlainDocument() {
             @Override
             public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
@@ -255,7 +255,7 @@ public class Login extends JFrame {
         // 로그인 버튼
         JButton loginButton = new JButton("로그인");
         loginButton.setBounds(390, 260, 500, 60);
-        loginButton.setFont(new Font("Serif", Font.BOLD, 24));
+        loginButton.setFont(new Font("맑은 고딕", Font.BOLD, 24));
         loginButton.setBorder(new RoundedBorder(10, new Color(39, 185, 89)));
         loginButton.setBackground(new Color(39, 185, 89)); // 연두색 배경
         loginButton.setBorder(new RoundedBorder(10, new Color(39, 185, 89))); // 연두색 테두리
@@ -288,7 +288,7 @@ public class Login extends JFrame {
         // 회원가입 버튼
         JButton signupButton = new JButton("회원가입");
         signupButton.setBounds(390, 340, 500, 60);
-        signupButton.setFont(new Font("Serif", Font.BOLD, 24));
+        signupButton.setFont(new Font("맑은 고딕", Font.BOLD, 24));
         signupButton.setBorder(new RoundedBorder(10, new Color(39, 185, 89)));
         signupButton.setBackground(Color.WHITE); // 하얀색 배경
         signupButton.setBorder(new RoundedBorder(10, new Color(39, 185, 89))); // 연두색 테두리

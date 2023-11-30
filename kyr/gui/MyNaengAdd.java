@@ -1,6 +1,5 @@
 package kyr.gui;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -121,9 +120,35 @@ public class MyNaengAdd extends JFrame {
                         searchField.setText(""); // 검색 필드 초기화
 
                         // 라벨을 클릭하여 삭제하는 기능 추가
-
                         textLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+                            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                JLabel clickedLabel = (JLabel) evt.getSource();
+                                int option = JOptionPane.showConfirmDialog(null, "정말로 삭제하시겠습니까?", "라벨 삭제", JOptionPane.YES_NO_OPTION);
+                                if (option == JOptionPane.YES_OPTION) {
+                                    int removedIndex = labelList.indexOf(clickedLabel); // 삭제될 라벨의 인덱스 가져오기
+                                    leftPanel.remove(clickedLabel); // 패널에서 라벨 제거
+                                    labelList.remove(clickedLabel); // 리스트에서도 제거
 
+                                    // 삭제된 라벨의 아래에 있는 라벨들만 한 칸씩 위로 이동
+                                    for (int i = removedIndex; i < labelList.size(); i++) {
+                                        JLabel label = labelList.get(i);
+                                        label.setLocation(label.getX(), label.getY() - clickedLabel.getHeight() - 3); // 삭제된 라벨의 높이만큼 위로 이동
+                                    }
+
+                                    leftPanel.revalidate(); // 패널 다시 그리기
+                                    leftPanel.repaint(); // 패널 재페인트
+                                }
+                            }
+
+                            private void rearrangeLabels(JPanel panel, JLabel removedLabel) {
+                                int removedIndex = panel.getComponentZOrder(removedLabel);
+                                int yOffset = removedLabel.getHeight() + 3; // 라벨 간 간격
+
+                                for (int i = removedIndex + 1; i < panel.getComponentCount(); i++) {
+                                    Component comp = panel.getComponent(i);
+                                    comp.setLocation(comp.getX(), comp.getY() - yOffset); // 삭제된 라벨 아래의 라벨들을 위로 이동
+                                }
+                            }
                             public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 JLabel enteredLabel = (JLabel) evt.getSource();
                                 Color ourGreen = new Color(29, 185, 89);
